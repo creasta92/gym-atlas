@@ -184,7 +184,11 @@ main { max-width: 640px; margin: 0 auto; padding: 0 20px 92px; }
 .filters { display: flex; gap: 8px; overflow-x: auto; margin: 12px -20px 0; padding: 0 20px 2px; scrollbar-width: none; }
 .filters::-webkit-scrollbar { display: none; }
 .filter[aria-pressed="true"] { background: var(--text); color: var(--bg); border-color: var(--text); }
-.cat-h { display: flex; align-items: center; gap: 10px; margin: 30px 0 2px; font: 700 28px/1 var(--cond); }
+.cat-h { display: flex; align-items: baseline; gap: 10px; margin: 30px 0 2px; font: 700 28px/1 var(--cond); }
+.cat-h .n { font: 500 15px var(--body); color: var(--muted); }
+.cat { --cat: var(--text); }
+.row-kit { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+.pat-sec { border-bottom-style: dashed; }
 .plate {
   width: 20px; height: 20px; border-radius: 50%; flex: none;
   background: radial-gradient(circle, var(--bg) 0 2.6px, var(--ink) 2.7px 3.8px, var(--cat) 3.9px);
@@ -289,6 +293,89 @@ main { max-width: 640px; margin: 0 auto; padding: 0 20px 92px; }
 .tips li { margin: 6px 0; }
 .tips li::marker { color: var(--hit); }
 
+
+/* journal */
+.btn-primary {
+  display: inline-flex; align-items: center; justify-content: center; height: 46px; padding: 0 20px;
+  border: 0; border-radius: 23px; background: var(--text); color: var(--bg); font: 600 16px/1 var(--body);
+}
+.btn-ghost {
+  display: inline-flex; align-items: center; justify-content: center; height: 42px; padding: 0 16px;
+  border: 1px solid var(--line); border-radius: 21px; background: var(--surface); color: var(--text); font: 600 15px/1 var(--body);
+}
+.link.danger { color: var(--hit); }
+.d-log { margin: 18px 0 0; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+.d-last { margin: 0; font-size: 14.5px; line-height: 1.4; }
+.d-last span { color: var(--muted); }
+.j-chart-l { margin: 0 0 4px; font-size: 13px; color: var(--muted); }
+.j-chart { display: block; width: 100%; height: auto; overflow: visible; }
+.jc-line { fill: none; stroke: var(--cat); stroke-width: 2.5; stroke-linejoin: round; stroke-linecap: round; }
+.jc-dot { fill: var(--bg); stroke: var(--cat); stroke-width: 2.5; }
+.jc-val { font: 600 11px var(--body); fill: var(--text); text-anchor: middle; }
+.jc-date { font: 400 10px var(--body); fill: var(--muted); text-anchor: middle; }
+.j-hist { list-style: none; margin: 10px 0 0; padding: 0; }
+.j-hist button { display: grid; grid-template-columns: 64px 1fr; gap: 10px; width: 100%; padding: 9px 0; border: 0; border-top: 1px solid var(--line); background: none; text-align: left; font: 400 14.5px/1.35 var(--body); }
+.j-hist li:last-child button { border-bottom: 1px solid var(--line); }
+.j-empty { text-align: center; padding: 34px 6px 10px; }
+.j-empty h2 { margin: 0 0 8px; font: 700 26px/1.1 var(--cond); }
+.j-empty p { margin: 0 auto 18px; max-width: 34ch; color: var(--muted); font-size: 15.5px; }
+.j-empty .link { display: block; margin: 12px auto 0; }
+.j-week h2 { margin: 8px 0 2px; font: 700 26px/1.05 var(--cond); }
+.j-week-txt { margin: 0; color: var(--muted); font-size: 15px; }
+.j-map { display: block; width: 100%; max-width: 300px; height: auto; margin: 6px auto 0; }
+.bm-m.h1 { fill: color-mix(in srgb, var(--hit) 32%, var(--bm-m)); }
+.bm-m.h2 { fill: color-mix(in srgb, var(--hit) 64%, var(--bm-m)); }
+.bm-m.h3 { fill: var(--hit); }
+.j-legend { display: flex; justify-content: center; gap: 16px; margin: 4px 0 0; font-size: 13px; color: var(--muted); }
+.j-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.hw { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+.hw.h1 { background: color-mix(in srgb, var(--hit) 32%, var(--bm-m)); }
+.hw.h2 { background: color-mix(in srgb, var(--hit) 64%, var(--bm-m)); }
+.hw.h3 { background: var(--hit); }
+.j-day { margin: 26px 0 0; padding-bottom: 6px; border-bottom: 2px solid var(--text); font: 600 15px/1.2 var(--body); }
+.j-tools { display: flex; flex-wrap: wrap; gap: 8px; margin: 26px 0 0; }
+.j-note { margin: 12px 0 0; font-size: 13.5px; color: var(--muted); }
+
+/* log sheet */
+.sheet { position: fixed; inset: 0; z-index: 40; display: flex; align-items: flex-end; justify-content: center; background: rgba(0, 0, 0, 0); transition: background .22s ease; }
+.sheet.open { background: rgba(0, 0, 0, .38); }
+.sheet-card {
+  width: 100%; max-width: 560px; max-height: 88vh; display: flex; flex-direction: column;
+  background: var(--sheet); border-radius: 20px 20px 0 0; padding-bottom: env(safe-area-inset-bottom, 0px);
+  transform: translateY(100%); transition: transform .22s cubic-bezier(.2, .8, .2, 1);
+}
+.sheet.open .sheet-card { transform: none; }
+.sheet-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 18px 20px 8px; }
+.sheet-head h2 { margin: 0; font: 700 24px/1.05 var(--cond); }
+.sheet-body { overflow-y: auto; padding: 4px 20px 8px; -webkit-overflow-scrolling: touch; }
+.sheet-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 20px 16px; border-top: 1px solid var(--line); }
+.sheet-foot .btn-primary { margin-left: auto; min-width: 140px; }
+.log-last { margin: 0 0 12px; padding: 10px 12px; border-radius: 12px; background: var(--surface); font-size: 14px; }
+.log-date { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0 0 14px; font-weight: 600; font-size: 15px; }
+.log-date input, .log-note textarea {
+  font: 400 16px var(--body); color: var(--text); background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px;
+}
+.log-grid { display: grid; grid-template-columns: 22px 1fr 1fr 30px; gap: 8px 8px; align-items: center; }
+.log-grid.cardio { grid-template-columns: 1fr 1fr; }
+.log-grid > span { font-size: 12.5px; color: var(--muted); }
+.log-grid .log-n { font: 700 18px/1 var(--cond); color: var(--text); text-align: center; }
+.stepper { display: grid; grid-template-columns: 36px 1fr 36px; height: 42px; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--surface); }
+.stepper button { border: 0; background: none; font: 500 20px/1 var(--body); color: var(--text); }
+.stepper button:active { background: var(--line); }
+.stepper input { width: 100%; min-width: 0; border: 0; background: none; text-align: center; font: 600 17px var(--body); color: var(--text); }
+.log-rm { width: 30px; height: 30px; border: 0; border-radius: 15px; background: none; color: var(--muted); font-size: 20px; }
+.log-rm:disabled { opacity: .3; }
+.log-add { margin: 10px 0 0; text-decoration: none; font-weight: 600; color: var(--text); }
+.log-note { display: flex; flex-direction: column; gap: 6px; margin: 16px 0 6px; font-weight: 600; font-size: 15px; }
+.log-note textarea { resize: vertical; }
+input, textarea { -webkit-user-select: text; user-select: text; }
+.toast {
+  position: fixed; left: 50%; bottom: calc(76px + env(safe-area-inset-bottom, 0px)); z-index: 50;
+  transform: translate(-50%, 10px); opacity: 0; transition: opacity .2s, transform .2s;
+  background: var(--text); color: var(--bg); padding: 10px 16px; border-radius: 20px; font: 600 14px/1.2 var(--body);
+}
+.toast.on { opacity: 1; transform: translate(-50%, 0); }
+@media (prefers-reduced-motion: reduce) { .sheet, .sheet-card, .toast { transition: none; } }
 @media (prefers-reduced-motion: reduce) {
   .detail, .bm-m, .thumb { transition: none; }
 }
@@ -311,9 +398,13 @@ main { max-width: 640px; margin: 0 auto; padding: 0 20px 92px; }
     <div id="results" aria-live="polite"></div>
   </section>
 
+  <section id="view-journal" aria-label="Jurnal" hidden>
+    <div id="journal"></div>
+  </section>
+
   <section id="view-catalog" aria-label="Catalog" hidden>
-    <div class="search"><input id="q" type="search" placeholder="Caută un exercițiu" autocomplete="off" enterkeyhint="search" aria-label="Caută un exercițiu"></div>
-    <div id="filters" class="filters" role="group" aria-label="Tip de mișcare"></div>
+    <div class="search"><input id="q" type="search" placeholder="Caută exercițiu sau aparat" autocomplete="off" enterkeyhint="search" aria-label="Caută un exercițiu"></div>
+    <div id="filters" class="filters" role="group" aria-label="Grupa de mușchi"></div>
     <div id="catalog"></div>
   </section>
 </main>
@@ -327,12 +418,25 @@ main { max-width: 640px; margin: 0 auto; padding: 0 20px 92px; }
     <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect class="ico-fill" x="3" y="4" width="5" height="5" rx="1.2"/><rect class="ico-fill" x="3" y="15" width="5" height="5" rx="1.2"/><path d="M11 5.5h10M11 8h6M11 16.5h10M11 19h6"/></svg>
     Catalog
   </button>
+  <button type="button" class="tab" data-tab="journal" aria-selected="false">
+    <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path class="ico-fill" d="M6 3.5h11a1.5 1.5 0 0 1 1.5 1.5v14a1.5 1.5 0 0 1-1.5 1.5H6z"/><path d="M6 3.5v17M9.5 8h5.5M9.5 11.5h5.5M9.5 15h3.5"/></svg>
+    Jurnal
+  </button>
 </nav>
 
 <div id="detail" class="detail" role="dialog" aria-modal="true" aria-labelledby="dTitle" hidden>
   <div class="d-bar"><button type="button" class="back" id="dBack"><span aria-hidden="true">‹</span> Înapoi</button></div>
   <div class="d-scroll"><div class="d-in" id="dBody"></div></div>
 </div>
+
+<div id="logSheet" class="sheet" role="dialog" aria-modal="true" aria-labelledby="logTitle" hidden>
+  <div class="sheet-card">
+    <div class="sheet-head"><h2 id="logTitle"></h2><button type="button" class="link" id="logCancel">Renunță</button></div>
+    <div class="sheet-body" id="logBody"></div>
+    <div class="sheet-foot"><button type="button" class="link danger" id="logDelete" hidden>Șterge</button><button type="button" class="btn-primary" id="logSave">Salvează</button></div>
+  </div>
+</div>
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
 
 <script>
 /**
@@ -369,7 +473,7 @@ main { max-width: 640px; margin: 0 auto; padding: 0 20px 92px; }
   const MUSCLES = {
     piept: 'Piept', umeri: 'Umeri', biceps: 'Biceps', triceps: 'Triceps', antebrate: 'Antebrațe',
     abdomen: 'Abdomen', oblici: 'Oblici', trapez: 'Trapez', dorsali: 'Dorsali', lombari: 'Lombari',
-    fesieri: 'Fesieri', cvadriceps: 'Cvadricepși', femurali: 'Femurali', gambe: 'Gambe'
+    fesieri: 'Fesieri', cvadriceps: 'Cvadricepși', adductori: 'Adductori', femurali: 'Femurali', gambe: 'Gambe'
   };
   const CATS = {
     push: { name: 'Împins', patterns: ['push_h', 'push_v', 'push_i'] },
@@ -392,13 +496,29 @@ main { max-width: 640px; margin: 0 auto; padding: 0 20px 92px; }
     { name: 'Core', m: ['abdomen', 'oblici'] }
   ];
 
+  const MGROUPS = [
+    { id: 'piept', name: 'Piept', m: ['piept'] }, { id: 'spate', name: 'Spate', m: ['dorsali', 'trapez', 'lombari'] },
+    { id: 'umeri', name: 'Umeri', m: ['umeri'] }, { id: 'biceps', name: 'Biceps', m: ['biceps'] },
+    { id: 'triceps', name: 'Triceps', m: ['triceps'] }, { id: 'antebrate', name: 'Antebrațe', m: ['antebrate'] },
+    { id: 'abdomen', name: 'Abdomen', m: ['abdomen', 'oblici'] }, { id: 'fesieri', name: 'Fesieri', m: ['fesieri'] },
+    { id: 'cvadriceps', name: 'Cvadricepși', m: ['cvadriceps'] }, { id: 'femurali', name: 'Femurali', m: ['femurali'] },
+    { id: 'adductori', name: 'Adductori', m: ['adductori'] }, { id: 'gambe', name: 'Gambe', m: ['gambe'] },
+    { id: 'cardio', name: 'Cardio', cardio: true }
+  ];
+  const KITS = { free: 'Greutăți libere', machine: 'Aparate și scripete', body: 'Greutatea corpului', acc: 'Accesorii' };
+  const KIT_OF = {
+    machine: 'cablefly lowfly pushdown pulldown cablerow facepull legpress legext legcurl woodchop machchest pecdeck machshoulder assistedpullup machrow reversefly cablecurl preacher straightpulldown hacksquat smithsquat seatedlegcurl abductor adductor seatedcalf kickback backext cablecrunch cablelateral ohcable pullthrough captainschair treadmill bike rower elliptical stairs inclinewalk',
+    body: 'pushup dips pullup chinup plank climber crunch situp legraise sideplank bicycle obliqueknee burpee jacks highknees jumpsquat calf declinepushup diamondpushup benchdip pikepushup invrow superman airsquat wallsit glutebridge nordic donkeykick deadbug birddog hollowhold reversecrunch lyinglegraise flutterkicks vup laterallunge',
+    acc: 'abwheel jumprope battleropes boxjump sledpush medslam wallball bandpullapart trxrow'
+  };
+
   /* ---------- exercises ---------- */
   const BENCH_FLAT = [{ pad: [36, 139, 126, 139] }, { leg: [44, 139] }, { leg: [118, 139] }];
   const EX = [
     /* ---- ÎMPINS ---- */
     {
       id: 'bench', name: 'Împins la piept cu bara', en: 'Bench press', cat: 'push', pat: 'push_h',
-      prim: ['piept'], sec: ['triceps', 'umeri'], equip: 'Bară și bancă', eq: 'barbell', props: BENCH_FLAT,
+      prim: ['piept'], sec: ['triceps', 'umeri'], equip: 'Bară și bancă', eq: 'barbell', props: BENCH_FLAT.concat([{ rack: [70, 76] }]),
       A: { hip: [112, 132], t: -90, h1: [77, 87], f1: [150, 168] },
       B: { h1: [85, 121] },
       steps: ['Întinde-te pe bancă cu ochii sub bară și tălpile ferm pe podea.', 'Apucă bara puțin mai larg decât umerii, strânge omoplații și scoate bara din suport.', 'Coboară controlat bara până atinge ușor partea de jos a pieptului, cu coatele la circa 45° față de corp.', 'Împinge bara înapoi în sus până la brațe întinse.'],
@@ -511,7 +631,7 @@ main { max-width: 640px; margin: 0 auto; padding: 0 20px 92px; }
     {
       id: 'pulldown', name: 'Tras la helcometru', en: 'Lat pulldown', cat: 'pull', pat: 'pull_v',
       prim: ['dorsali'], sec: ['biceps', 'trapez', 'antebrate'], equip: 'Aparat helcometru', eq: 'handle', cable: [104, 6],
-      props: [{ pulley: [104, 6] }, { pad: [76, 139, 112, 139] }, { post: [94, 139, 172] }, { disc: [122, 124, 6] }],
+      props: [{ pulley: [104, 6] }, { pad: [104, 2, 146, 2, 6] }, { post: [146, 2, 172] }, { pad: [76, 139, 112, 139] }, { post: [94, 139, 172] }, { disc: [122, 124, 6] }],
       A: { hip: [95, 133], t: -8, h1: [99, 50], f1: [128, 168] },
       B: { t: -14, h1: [95, 105] },
       steps: ['Așază-te cu coapsele fixate sub suport și apucă bara larg.', 'Lasă-te foarte puțin pe spate, cu pieptul sus.', 'Trage bara spre partea de sus a pieptului, ducând coatele în jos și înapoi.', 'Lasă bara să urce controlat până la brațe întinse.'],
@@ -536,8 +656,8 @@ main { max-width: 640px; margin: 0 auto; padding: 0 20px 92px; }
     },
     {
       id: 'cablerow', name: 'Ramat la scripete jos', en: 'Seated cable row', cat: 'pull', pat: 'pull_h',
-      prim: ['dorsali', 'trapez'], sec: ['biceps', 'umeri'], equip: 'Scripete jos', eq: 'handle', cable: [154, 128],
-      props: [{ pad: [56, 141, 110, 141] }, { leg: [62, 141] }, { leg: [104, 141] }, { post: [162, 96, 172] }, { pulley: [154, 128] }, { pad: [148, 132, 148, 164] }],
+      prim: ['dorsali', 'trapez'], sec: ['biceps', 'umeri'], equip: 'Scripete jos', eq: 'handle', cable: [154, 113],
+      props: [{ pad: [56, 141, 110, 141] }, { leg: [62, 141] }, { leg: [104, 141] }, { post: [162, 60, 172] }, { pulley: [154, 113] }, { pad: [148, 132, 148, 164] }],
       A: { hip: [88, 135], t: 20, h1: [146, 104], f1: [141, 148], fo1: 0 },
       B: { t: -6, h1: [100, 116] },
       steps: ['Stai pe bancă cu tălpile pe suport și genunchii ușor îndoiți.', 'Apucă mânerul cu brațele întinse și spatele drept.', 'Trage mânerul spre abdomen, strângând omoplații.', 'Lasă brațele să se întindă controlat, fără să rotunjești spatele.'],
@@ -580,7 +700,7 @@ main { max-width: 640px; margin: 0 auto; padding: 0 20px 92px; }
     /* ---- PICIOARE ---- */
     {
       id: 'squat', name: 'Genuflexiuni cu bara', en: 'Back squat', cat: 'legs', pat: 'squat',
-      prim: ['cvadriceps', 'fesieri'], sec: ['femurali', 'lombari', 'abdomen'], equip: 'Bară și rack', eq: 'barbell',
+      prim: ['cvadriceps', 'fesieri'], sec: ['adductori', 'femurali', 'lombari', 'abdomen'], equip: 'Bară și rack', eq: 'barbell',
       A: { hip: [97, 98], t: 5, a1: [200, 10], ar: 1, ak: 0.6, f1: [100, 168] },
       B: { hip: [72, 128], t: 45 },
       steps: ['Așază bara pe partea de sus a spatelui, nu pe gât, și stai cu tălpile la lățimea umerilor.', 'Inspiră, strânge abdomenul și împinge șoldurile înapoi și în jos.', 'Coboară până coapsele ajung cel puțin paralel cu podeaua, cu genunchii pe direcția vârfurilor.', 'Împinge prin toată talpa ca să revii în picioare.'],
@@ -588,7 +708,7 @@ main { max-width: 640px; margin: 0 auto; padding: 0 20px 92px; }
     },
     {
       id: 'goblet', name: 'Genuflexiuni goblet', en: 'Goblet squat', cat: 'legs', pat: 'squat',
-      prim: ['cvadriceps', 'fesieri'], sec: ['abdomen'], equip: 'Gantera sau kettlebell', eq: 'kettlebell',
+      prim: ['cvadriceps', 'fesieri'], sec: ['adductori', 'abdomen'], equip: 'Gantera sau kettlebell', eq: 'kettlebell',
       A: { hip: [97, 98], t: 3, a1: [165, 15], ar: 1, f1: [100, 168] },
       B: { hip: [80, 134], t: 25 },
       steps: ['Ține gantera sau kettlebell-ul lipit de piept, cu coatele în jos.', 'Stai cu tălpile puțin mai larg decât umerii, vârfurile ușor spre exterior.', 'Coboară între genunchi, cu pieptul sus și spatele drept.', 'Împinge prin călcâie și revino în picioare.'],
@@ -596,7 +716,7 @@ main { max-width: 640px; margin: 0 auto; padding: 0 20px 92px; }
     },
     {
       id: 'legpress', name: 'Presă pentru picioare', en: 'Leg press', cat: 'legs', pat: 'squat',
-      prim: ['cvadriceps', 'fesieri'], sec: ['femurali'], equip: 'Aparat presă', footPlate: 45,
+      prim: ['cvadriceps', 'fesieri'], sec: ['femurali', 'adductori'], equip: 'Aparat presă', footPlate: 45,
       props: [{ rail: [104, 134, 162, 76] }, { pad: [76, 146, 33, 115] }, { pad: [76, 146, 98, 151] }, { leg: [52, 132] }, { leg: [86, 149] }],
       A: { hip: [80, 140], t: -55, a1: [150, 100], f1: [129.6, 90.4], fo1: -45 },
       B: { f1: [104, 116] },
@@ -647,7 +767,7 @@ main { max-width: 640px; margin: 0 auto; padding: 0 20px 92px; }
     },
     {
       id: 'legcurl', name: 'Flexii pentru femurali', en: 'Lying leg curl', cat: 'legs', pat: 'legs_i',
-      prim: ['femurali'], sec: ['gambe'], equip: 'Aparat flexii', anklePad: true,
+      prim: ['femurali'], sec: ['gambe'], equip: 'Aparat flexii', anklePad: true, padSide: 1,
       props: [{ pad: [40, 139, 176, 139] }, { leg: [50, 139] }, { leg: [166, 139] }],
       A: { hip: [85, 132], t: 90, a1: [100, 90], l1: [270, 268], fo1: 180 },
       B: { l1: [270, 345], fo1: 270 },
@@ -793,6 +913,170 @@ main { max-width: 640px; margin: 0 auto; padding: 0 20px 92px; }
       tips: ['Dacă te înclini spre greutate, e prea grea.']
     },
 
+    /* ---- APARATE ---- */
+    {
+      id: 'machchest', name: 'Presă piept la aparat', en: 'Machine chest press', cat: 'push', pat: 'push_h',
+      prim: ['piept'], sec: ['umeri', 'triceps'], equip: 'Aparat presă piept', lever: [126, 40],
+      props: [{ pad: [80, 139, 108, 139] }, { pad: [80, 139, 76, 70] }, { leg: [84, 139] }, { leg: [104, 139] }, { post: [140, 36, 172] }, { pad: [118, 36, 142, 36, 6] }],
+      A: { hip: [90, 133], t: -6, h1: [104, 98], f1: [128, 168] },
+      B: { h1: [131, 99] },
+      steps: ['Reglează scaunul astfel încât mânerele să fie la nivelul pieptului.', 'Stai cu spatele lipit de spătar și apucă mânerele.', 'Împinge în față până aproape întinzi brațele.', 'Revino controlat, fără să lași greutățile să se lovească.'],
+      tips: ['Umerii rămân lipiți de spătar; nu împinge cu ei în față.']
+    },
+    {
+      id: 'pecdeck', name: 'Fluturări la aparat', en: 'Pec deck', cat: 'push', pat: 'push_h',
+      prim: ['piept'], sec: ['umeri'], equip: 'Aparat fluturări (pec deck)', leverH: [-4, 17],
+      props: [{ pad: [80, 139, 108, 139] }, { pad: [80, 139, 76, 70] }, { leg: [84, 139] }, { leg: [104, 139] }, { post: [72, 34, 172] }, { pad: [70, 36, 100, 36, 6] }],
+      A: { hip: [90, 133], t: -6, a1: [92, 88], ak: 0.3, f1: [128, 168] },
+      B: { a1: [95, 92], ak: 1 },
+      steps: ['Reglează scaunul ca mânerele să fie la nivelul pieptului.', 'Apucă mânerele cu coatele ușor îndoite.', 'Adu brațele în față până se întâlnesc mânerele.', 'Deschide controlat până simți întinderea în piept.'],
+      tips: ['Nu lăsa brațele să treacă mult în spatele corpului.']
+    },
+    {
+      id: 'machshoulder', name: 'Presă umeri la aparat', en: 'Machine shoulder press', cat: 'push', pat: 'push_v',
+      prim: ['umeri'], sec: ['triceps', 'trapez'], equip: 'Aparat presă umeri', lever: [66, 122],
+      props: [{ pad: [84, 139, 122, 139] }, { pad: [84, 139, 80, 76] }, { leg: [88, 139] }, { leg: [118, 139] }, { post: [70, 60, 172] }],
+      A: { hip: [93, 133], t: -4, a1: [95, 0], uak: 0.35, f1: [140, 168] },
+      B: { a1: [5, 2], uak: 1 },
+      steps: ['Reglează scaunul ca mânerele să fie puțin deasupra umerilor.', 'Stai cu spatele lipit de spătar și apucă mânerele.', 'Împinge în sus până aproape întinzi brațele.', 'Coboară controlat până la nivelul umerilor.'],
+      tips: ['Nu arcui zona lombară ca să împingi.']
+    },
+    {
+      id: 'assistedpullup', name: 'Tracțiuni asistate la aparat', en: 'Assisted pull-up machine', cat: 'pull', pat: 'pull_v',
+      prim: ['dorsali'], sec: ['biceps', 'trapez', 'antebrate'], equip: 'Aparat de tracțiuni asistate', kneePad: true,
+      props: [{ post: [72, 4, 24] }, { post: [128, 4, 24] }, { bar: [66, 24, 134] }],
+      A: { hip: [98, 107], t: 0, h1: [100, 26], l1: [178, 270] },
+      B: { hip: [99.4, 64.4], t: -10, l1: [176, 268] },
+      steps: ['Alege greutatea de asistență: cu cât e mai mare, cu atât e mai ușor.', 'Pune genunchii pe suport și apucă bara puțin mai larg decât umerii.', 'Trage-te în sus până bărbia trece de bară.', 'Coboară controlat până la brațe întinse.'],
+      tips: ['Scade treptat asistența pe măsură ce devii mai puternic.']
+    },
+    {
+      id: 'machrow', name: 'Ramat la aparat cu pieptul sprijinit', en: 'Chest-supported machine row', cat: 'pull', pat: 'pull_h',
+      prim: ['dorsali', 'trapez'], sec: ['biceps', 'umeri'], equip: 'Aparat de ramat', lever: [146, 150],
+      props: [{ pad: [72, 139, 102, 139] }, { leg: [78, 139] }, { leg: [98, 139] }, { pad: [106, 86, 106, 122] }, { post: [152, 60, 172] }],
+      A: { hip: [88, 133], t: 8, h1: [140, 104], f1: [126, 168] },
+      B: { h1: [110, 108] },
+      steps: ['Reglează scaunul ca pieptul să stea pe suport și mânerele să fie la nivelul pieptului.', 'Apucă mânerele cu brațele întinse.', 'Trage coatele înapoi, strângând omoplații.', 'Revino controlat până la brațe întinse.'],
+      tips: ['Pieptul rămâne lipit de suport tot timpul.']
+    },
+    {
+      id: 'reversefly', name: 'Fluturări inverse la aparat', en: 'Reverse pec deck', cat: 'pull', pat: 'pull_i',
+      prim: ['umeri', 'trapez'], sec: [], equip: 'Aparat fluturări (pec deck)', leverH: [24, 9],
+      props: [{ pad: [72, 139, 102, 139] }, { leg: [78, 139] }, { leg: [98, 139] }, { pad: [106, 101, 106, 124] }, { post: [120, 34, 172] }, { pad: [98, 36, 122, 36, 6] }],
+      A: { hip: [88, 133], t: 8, a1: [92, 90], ak: 1, f1: [126, 168] },
+      B: { a1: [100, 96], ak: 0.3 },
+      steps: ['Stai cu fața spre aparat și pieptul lipit de suport.', 'Apucă mânerele cu brațele întinse în față.', 'Deschide brațele lateral până ajung în linie cu umerii.', 'Revino controlat.'],
+      tips: ['Folosește greutate mică; mișcarea pornește din umeri, nu din spate.']
+    },
+    {
+      id: 'cablecurl', name: 'Flexii biceps la scripete', en: 'Cable curl', cat: 'pull', pat: 'pull_i',
+      prim: ['biceps'], sec: ['antebrate'], equip: 'Scripete jos cu bară', eq: 'handle', cable: [150, 160],
+      props: [{ post: [156, 100, 172] }, { pulley: [150, 160] }],
+      A: { hip: [100, 98], t: 0, a1: [178, 176], f1: [102, 168] },
+      B: { a1: [172, 22] },
+      steps: ['Prinde bara de la scripetele de jos și stai drept, aproape de aparat.', 'Lipește coatele de corp.', 'Îndoaie coatele și adu bara spre umeri.', 'Coboară lent, păstrând tensiunea pe cablu.'],
+      tips: ['Coatele nu pleacă în față.']
+    },
+    {
+      id: 'preacher', name: 'Flexii la pupitrul Scott', en: 'Preacher curl', cat: 'pull', pat: 'pull_i',
+      prim: ['biceps'], sec: ['antebrate'], equip: 'Pupitru Scott și bară EZ', eq: 'ez',
+      props: [{ pad: [74, 139, 100, 139] }, { leg: [80, 139] }, { leg: [96, 139] }, { pad: [96, 109, 118, 124] }, { post: [110, 122, 172] }],
+      A: { hip: [88, 133], t: 8, a1: [125, 120], f1: [118, 168] },
+      B: { a1: [125, 10] },
+      steps: ['Reglează scaunul ca axilele să fie pe marginea pupitrului.', 'Sprijină brațele pe pupitru și apucă bara.', 'Îndoaie coatele și ridică greutatea.', 'Coboară lent până aproape de brațe întinse.'],
+      tips: ['Nu ridica umerii și nu desprinde brațele de pupitru.']
+    },
+    {
+      id: 'straightpulldown', name: 'Pulldown cu brațele întinse', en: 'Straight-arm pulldown', cat: 'pull', pat: 'pull_v',
+      prim: ['dorsali'], sec: ['triceps', 'abdomen'], equip: 'Scripete sus cu bară', eq: 'handle', cable: [150, 20],
+      props: [{ post: [156, 10, 172] }, { pulley: [150, 20] }],
+      A: { hip: [96, 100], t: 18, a1: [38, 38], f1: [104, 168] },
+      B: { a1: [168, 168] },
+      steps: ['Prinde bara de la scripetele de sus și fă un pas înapoi.', 'Aplecă-te puțin în față, cu brațele întinse și coatele ușor îndoite.', 'Coboară bara în arc până la coapse, mișcând doar din umeri.', 'Revino controlat până la nivelul capului.'],
+      tips: ['Brațele rămân întinse; nu transforma mișcarea în extensii de triceps.']
+    },
+    {
+      id: 'hacksquat', name: 'Hack squat la aparat', en: 'Hack squat machine', cat: 'legs', pat: 'squat',
+      prim: ['cvadriceps', 'fesieri'], sec: ['femurali', 'adductori'], equip: 'Aparat hack squat', backPad: true,
+      props: [{ rail: [61, 51, 109, 155] }, { pad: [104, 170, 142, 170, 32] }],
+      A: { hip: [90, 100], t: -25, a1: [160, 10], ar: 1, f1: [118, 166] },
+      B: { hip: [102.7, 127.2] },
+      steps: ['Așază spatele pe spătar și umerii sub pernițe, cu tălpile pe platformă, la lățimea umerilor.', 'Deblochează aparatul.', 'Coboară până coapsele ajung cel puțin paralel cu platforma.', 'Împinge înapoi sus, fără să blochezi complet genunchii.'],
+      tips: ['Călcâiele rămân pe platformă.']
+    },
+    {
+      id: 'smithsquat', name: 'Genuflexiuni la aparatul Smith', en: 'Smith machine squat', cat: 'legs', pat: 'squat',
+      prim: ['cvadriceps', 'fesieri'], sec: ['femurali', 'adductori', 'lombari'], equip: 'Aparat Smith', eq: 'barbell',
+      props: [{ post: [101, 8, 172] }],
+      A: { hip: [100, 98], t: 2, a1: [200, 10], ar: 1, ak: 0.6, f1: [108, 168] },
+      B: { hip: [82.8, 123], t: 30 },
+      steps: ['Așază bara pe partea de sus a spatelui și pune tălpile puțin în fața ei.', 'Rotește bara ca s-o deblochezi din cârlige.', 'Coboară până coapsele ajung paralel cu podeaua.', 'Împinge în sus și blochează bara în cârlige la final.'],
+      tips: ['Fixează siguranțele aparatului puțin sub punctul cel mai de jos.']
+    },
+    {
+      id: 'seatedlegcurl', name: 'Flexii femurali șezând', en: 'Seated leg curl', cat: 'legs', pat: 'legs_i',
+      prim: ['femurali'], sec: ['gambe'], equip: 'Aparat flexii șezând', anklePad: true, padSide: 1,
+      props: [{ pad: [76, 134, 104, 134] }, { pad: [76, 134, 66, 80] }, { leg: [80, 134] }, { leg: [100, 134] }, { disc: [112, 119, 6] }],
+      A: { hip: [88, 128], t: -10, a1: [170, 150], l1: [92, 100], fo1: 10 },
+      B: { l1: [92, 200], fo1: 110 },
+      steps: ['Reglează aparatul ca genunchii să fie în dreptul axei, cu suportul deasupra călcâielor.', 'Coboară suportul de pe coapse ca să le fixeze.', 'Îndoaie genunchii și trage călcâiele sub scaun.', 'Revino controlat până aproape de picioare întinse.'],
+      tips: ['Nu ridica șoldurile de pe scaun.']
+    },
+    {
+      id: 'abductor', name: 'Aparat pentru abductori', en: 'Hip abductor machine', cat: 'legs', pat: 'legs_i',
+      prim: ['fesieri'], sec: [], equip: 'Aparat abductori', kneePads: 'out',
+      props: [{ pad: [80, 139, 108, 139] }, { pad: [80, 139, 74, 76] }, { leg: [84, 139] }, { leg: [104, 139] }],
+      A: { hip: [90, 133], t: -8, a1: [178, 150], l1: [92, 175], ab: 0 },
+      B: { ab: 1 },
+      steps: ['Stai cu spatele lipit de spătar, cu pernițele pe exteriorul genunchilor.', 'Împinge genunchii în lateral cât de mult poți controlat.', 'Ține o secundă, apoi revino încet.', 'Nu lăsa greutățile să se lovească între repetări.'],
+      tips: ['Mișcarea vine din șolduri; nu te apleca în față.']
+    },
+    {
+      id: 'adductor', name: 'Aparat pentru adductori', en: 'Hip adductor machine', cat: 'legs', pat: 'legs_i',
+      prim: ['adductori'], sec: [], equip: 'Aparat adductori', kneePads: 'in',
+      props: [{ pad: [80, 139, 108, 139] }, { pad: [80, 139, 74, 76] }, { leg: [84, 139] }, { leg: [104, 139] }],
+      A: { hip: [90, 133], t: -8, a1: [178, 150], l1: [92, 175], ab: 1 },
+      B: { ab: 0 },
+      steps: ['Stai cu spatele lipit de spătar, cu pernițele pe interiorul genunchilor.', 'Strânge genunchii unul spre celălalt.', 'Ține o secundă, apoi deschide încet.', 'Alege o deschidere confortabilă, fără întindere forțată.'],
+      tips: ['Controlează revenirea; nu lăsa aparatul să-ți tragă picioarele.']
+    },
+    {
+      id: 'seatedcalf', name: 'Ridicări pe vârfuri șezând', en: 'Seated calf raise', cat: 'legs', pat: 'legs_i',
+      prim: ['gambe'], sec: [], equip: 'Aparat gambe șezând', kneeTop: true,
+      props: [{ pad: [74, 134, 104, 134] }, { leg: [80, 134] }, { leg: [100, 134] }, { rect: [128, 166, 24, 6] }],
+      A: { hip: [90, 128], t: -2, h1: [116, 120], f1: [126, 162], fo1: 90 },
+      B: { f1: [127.5, 156.5], fo1: 122 },
+      steps: ['Așază-te cu vârfurile pe treaptă și pernița pe coapse, chiar deasupra genunchilor.', 'Deblochează aparatul.', 'Ridică-te pe vârfuri cât de sus poți.', 'Coboară lent, cu călcâiele sub nivelul treptei.'],
+      tips: ['Varianta șezând lucrează mai ales mușchiul solear, de sub gambă.']
+    },
+    {
+      id: 'kickback', name: 'Extensii de șold la scripete', en: 'Cable glute kickback', cat: 'legs', pat: 'legs_i',
+      prim: ['fesieri'], sec: ['femurali'], equip: 'Scripete jos cu manșetă de gleznă', cable: [150, 165], cableFrom: 'a1',
+      props: [{ post: [156, 60, 172] }, { pulley: [150, 165] }],
+      A: { hip: [96, 98], t: 20, h1: [130, 92], f2: [100, 168], l1: [178, 182] },
+      B: { l1: [215, 205] },
+      steps: ['Prinde manșeta de gleznă la scripetele de jos și stai cu fața spre aparat.', 'Ține-te de aparat și aplecă-te ușor în față.', 'Împinge piciorul înapoi strângând fesierii, fără să arcuiești spatele.', 'Revino controlat, termină repetările și schimbă piciorul.'],
+      tips: ['Mișcarea e din șold; zona lombară rămâne neutră.']
+    },
+    {
+      id: 'backext', name: 'Hiperextensii la banca romană', en: 'Back extension (45°)', cat: 'legs', pat: 'hinge',
+      prim: ['lombari', 'fesieri'], sec: ['femurali'], equip: 'Bancă romană la 45°',
+      props: [{ pad: [97, 121, 81, 137] }, { post: [89, 129, 172] }, { pad: [46, 170, 62, 156] }, { disc: [49, 151, 5] }, { pad: [40, 170, 120, 170, 22] }],
+      A: { hip: [104, 108], t: 45, r1: [-12, 5], f1: [54, 158], fo1: 135 },
+      B: { t: 150 },
+      steps: ['Reglează pernița ca marginea ei să fie chiar sub șolduri și fixează călcâiele sub suport.', 'Încrucișează brațele pe piept.', 'Coboară trunchiul controlat, îndoindu-te din șolduri.', 'Ridică-te până corpul e în linie dreaptă, fără să te arcuiești peste.'],
+      tips: ['Nu hiperextinde spatele în partea de sus.']
+    },
+    {
+      id: 'cablecrunch', name: 'Abdomene la scripete', en: 'Kneeling cable crunch', cat: 'core', pat: 'core_f',
+      prim: ['abdomen'], sec: ['oblici'], equip: 'Scripete sus cu frânghie', eq: 'handle', cable: [150, 20],
+      props: [{ post: [156, 10, 172] }, { pulley: [150, 20] }],
+      A: { hip: [93, 131], t: 10, nk: 0, r1: [8, 7], f1: [60, 166], fo1: 250 },
+      B: { t: 68, nk: 22 },
+      steps: ['Îngenunchează în fața scripetelui de sus și ține frânghia lângă cap.', 'Șoldurile rămân fixe, deasupra genunchilor.', 'Rulează trunchiul în jos, apropiind coatele de genunchi.', 'Revino controlat, fără să lași greutatea să te tragă.'],
+      tips: ['Mișcarea vine din abdomen; nu trage cu brațele și nu te lăsa pe șolduri.']
+    },
+
     /* ---- CARDIO ---- */
     {
       id: 'treadmill', name: 'Alergare pe bandă', en: 'Treadmill run', cat: 'cardio', pat: 'card_m',
@@ -926,9 +1210,504 @@ main { max-width: 640px; margin: 0 auto; padding: 0 20px 92px; }
       steps: ['Apucă capetele frânghiilor și fă un pas înapoi până se întind ușor.', 'Stai în semi-genuflexiune, cu pieptul sus.', 'Mișcă brațele alternativ sus-jos, rapid, ca valurile să ajungă până la ancoră.', 'Lucrează în reprize scurte, cu pauze.'],
       tips: ['Mișcarea pornește din umeri, nu doar din încheieturi.'],
       dose: [['Intervale', '20–30 s lucru, 30–40 s pauză, de 6–10 ori.'], ['Variații', 'Valuri duble, cercuri sau lovituri în podea.']]
+},
+
+    /* ---- EXTRA: greutăți libere, greutatea corpului, accesorii ---- */
+    {
+      id: 'dbbench', like: 'bench', name: 'Împins cu gantere pe bancă', en: 'Dumbbell bench press', cat: 'push', pat: 'push_h',
+      prim: ['piept'], sec: ['triceps', 'umeri'], equip: 'Gantere și bancă', eq: 'dumbbell', props: BENCH_FLAT, Bx: { h1: [88, 118] },
+      steps: ['Așază-te pe bancă cu ganterele pe coapse, apoi întinde-te și ridică-le deasupra pieptului.', 'Coboară ganterele lateral, până la nivelul pieptului, cu coatele la circa 45°.', 'Împinge-le înapoi în sus, apropiindu-le ușor.', 'La final, adu-le pe coapse înainte să te ridici.'],
+      tips: ['Încheieturile rămân drepte, deasupra coatelor.']
+    },
+    {
+      id: 'inclinebench', like: 'incline', name: 'Împins înclinat cu bara', en: 'Incline bench press', cat: 'push', pat: 'push_h',
+      prim: ['piept'], sec: ['umeri', 'triceps'], equip: 'Bară și bancă înclinată', eq: 'barbell',
+      props: [{ pad: [101, 139, 128, 139] }, { pad: [101, 139, 66, 97] }, { leg: [106, 139] }, { leg: [124, 139] }, { post: [84, 118, 172] }, { rack: [74, 58] }],
+      steps: ['Întinde-te pe banca înclinată la 30–45°, cu ochii sub bară.', 'Apucă bara puțin mai larg decât umerii și scoate-o din suport.', 'Coboară bara spre partea de sus a pieptului.', 'Împinge înapoi în sus până la brațe întinse.'],
+      tips: ['Fesierii rămân pe bancă; nu arcui excesiv spatele.']
+    },
+    {
+      id: 'declinebench', name: 'Împins declinat cu bara', en: 'Decline bench press', cat: 'push', pat: 'push_h',
+      prim: ['piept'], sec: ['triceps', 'umeri'], equip: 'Bară și bancă declinată', eq: 'barbell',
+      props: [{ pad: [124, 130, 50, 150] }, { leg: [60, 147] }, { leg: [116, 132] }, { disc: [151, 139, 5] }, { rack: [62, 84] }],
+      A: { hip: [110, 128], t: -105, h1: [76, 93], l1: [60, 170] },
+      B: { h1: [84, 127] },
+      steps: ['Prinde picioarele sub suport și întinde-te pe banca declinată.', 'Apucă bara puțin mai larg decât umerii și scoate-o din suport.', 'Coboară bara spre partea de jos a pieptului.', 'Împinge înapoi în sus până la brațe întinse.'],
+      tips: ['Cere ajutorul unui partener la seriile grele.']
+    },
+    {
+      id: 'closegrip', like: 'bench', name: 'Împins cu priză îngustă', en: 'Close-grip bench press', cat: 'push', pat: 'push_i',
+      prim: ['triceps', 'piept'], sec: ['umeri'], equip: 'Bară și bancă',
+      steps: ['Întinde-te pe bancă și apucă bara la lățimea umerilor.', 'Coboară bara spre partea de jos a pieptului, cu coatele lipite de corp.', 'Împinge înapoi în sus, întinzând complet coatele.'],
+      tips: ['Priza nu trebuie să fie foarte îngustă; la lățimea umerilor e destul.']
+    },
+    {
+      id: 'dbfly', name: 'Fluturări cu gantere pe bancă', en: 'Dumbbell fly', cat: 'push', pat: 'push_h',
+      prim: ['piept'], sec: ['umeri'], equip: 'Gantere și bancă', eq: 'dumbbell', props: BENCH_FLAT,
+      A: { hip: [112, 132], t: -90, a1: [0, 4], ak: 1, f1: [150, 168] },
+      B: { a1: [6, 16], ak: 0.35 },
+      steps: ['Întinde-te pe bancă și ține ganterele deasupra pieptului, cu coatele ușor îndoite.', 'Deschide brațele lateral, în arc, până simți întinderea în piept.', 'Adu ganterele înapoi deasupra pieptului pe același arc.'],
+      tips: ['Coatele rămân la fel de îndoite; nu transforma mișcarea în împins.']
+    },
+    {
+      id: 'lowfly', like: 'cablefly', name: 'Fluturări la scripete de jos în sus', en: 'Low-to-high cable fly', cat: 'push', pat: 'push_h',
+      prim: ['piept'], sec: ['umeri'], equip: 'Scripete dublu, jos', cable: [50, 150],
+      props: [{ post: [46, 10, 172] }, { pulley: [50, 150] }],
+      Ax: { a1: [150, 150], ak: 0.35 }, Bx: { a1: [76, 66], ak: 1 },
+      steps: ['Fixează scripeții jos și stai la mijloc, cu un picior în față.', 'Pornește cu brațele jos și deschise, coatele ușor îndoite.', 'Adu mânerele în sus și în față, până se întâlnesc la nivelul pieptului.', 'Revino controlat.'],
+      tips: ['Lucrează mai ales partea de sus a pieptului.']
+    },
+    {
+      id: 'pullover', name: 'Pullover cu gantera', en: 'Dumbbell pullover', cat: 'push', pat: 'push_i',
+      prim: ['piept', 'dorsali'], sec: ['triceps'], equip: 'Gantera și bancă', eq: 'dumbbell', eqNear: true, props: BENCH_FLAT,
+      A: { hip: [112, 132], t: -90, a1: [-4, -6], f1: [150, 168] },
+      B: { a1: [-96, -100] },
+      steps: ['Întinde-te pe bancă și ține o gantera cu ambele mâini deasupra pieptului.', 'Cu coatele ușor îndoite, coboară gantera în arc în spatele capului.', 'Oprește-te când simți întinderea în piept și dorsali.', 'Readu gantera deasupra pieptului pe același arc.'],
+      tips: ['Nu coborî mai mult decât îți permit umerii.']
+    },
+    {
+      id: 'declinepushup', name: 'Flotări cu picioarele ridicate', en: 'Decline push-up', cat: 'push', pat: 'push_h',
+      prim: ['piept', 'umeri'], sec: ['triceps', 'abdomen'], equip: 'Bancă sau cutie',
+      props: [{ rect: [14, 118, 40, 54] }],
+      A: { hip: [103.3, 118.3], t: 97, h1: [140, 168], f1: [32, 109.5], fo1: 170 },
+      B: { hip: [106.9, 134.1], t: 108 },
+      steps: ['Pune vârfurile picioarelor pe o bancă și palmele pe podea, puțin mai larg decât umerii.', 'Ține corpul drept, cu abdomenul strâns.', 'Coboară pieptul spre podea.', 'Împinge înapoi până la brațe întinse.'],
+      tips: ['Cu cât picioarele sunt mai sus, cu atât lucrează mai mult umerii.']
+    },
+    {
+      id: 'diamondpushup', like: 'pushup', name: 'Flotări diamant', en: 'Diamond push-up', cat: 'push', pat: 'push_i',
+      prim: ['triceps'], sec: ['piept', 'umeri'], equip: 'Greutatea corpului',
+      steps: ['Pune palmele apropiate sub piept, cu degetele mari și arătătoarele formând un romb.', 'Ține corpul drept, cu abdomenul strâns.', 'Coboară pieptul spre mâini, cu coatele pe lângă corp.', 'Împinge înapoi până la brațe întinse.'],
+      tips: ['Variantă mai ușoară: pe genunchi.']
+    },
+    {
+      id: 'benchdip', name: 'Flotări pe bancă', en: 'Bench dip', cat: 'push', pat: 'push_i',
+      prim: ['triceps'], sec: ['piept', 'umeri'], equip: 'Bancă',
+      props: [{ pad: [40, 137, 82, 137] }, { leg: [46, 137] }, { leg: [76, 137] }],
+      A: { hip: [86, 125], t: 0, h1: [82, 133], f1: [140, 166], fo1: 0 },
+      B: { hip: [90, 149] },
+      steps: ['Sprijină palmele pe marginea unei bănci, în spatele tău, cu picioarele întinse în față.', 'Coboară corpul îndoind coatele, până brațul ajunge paralel cu podeaua.', 'Împinge înapoi până la brațe întinse.'],
+      tips: ['Ține spatele aproape de bancă.', 'Variantă mai ușoară: cu genunchii îndoiți.']
+    },
+    {
+      id: 'arnold', like: 'seatpress', name: 'Presă Arnold', en: 'Arnold press', cat: 'push', pat: 'push_v',
+      prim: ['umeri'], sec: ['triceps'], equip: 'Gantere și bancă',
+      Ax: { a1: [150, 4], uak: 1 }, Bx: { a1: [5, 2], uak: 1 },
+      steps: ['Stai pe bancă cu ganterele în fața umerilor, palmele spre tine.', 'Împinge în sus și rotește palmele spre înainte în timpul mișcării.', 'Termină cu brațele deasupra capului.', 'Coboară rotind înapoi palmele spre tine.'],
+      tips: ['Mișcare lentă și controlată, fără balans.']
+    },
+    {
+      id: 'uprightrow', name: 'Ramat vertical', en: 'Upright row', cat: 'pull', pat: 'pull_i',
+      prim: ['umeri', 'trapez'], sec: ['biceps'], equip: 'Bară sau bară EZ', eq: 'barbell',
+      A: { hip: [100, 98], t: 0, a1: [178, 178], uak: 1, f1: [102, 168] },
+      B: { a1: [60, 180], uak: 0.45 },
+      steps: ['Stai drept și ține bara în fața coapselor, cu priza puțin mai îngustă decât umerii.', 'Trage bara în sus, pe lângă corp, ducând coatele în lateral.', 'Oprește-te când coatele ajung la nivelul umerilor.', 'Coboară controlat.'],
+      tips: ['Nu ridica bara mai sus de piept dacă simți disconfort în umeri.']
+    },
+    {
+      id: 'cablelateral', name: 'Ridicări laterale la scripete', en: 'Cable lateral raise', cat: 'push', pat: 'push_i', view: 'front',
+      prim: ['umeri'], sec: ['trapez'], equip: 'Scripete jos', cable: [40, 162], cableFrom: 'wR',
+      props: [{ post: [34, 80, 172] }, { pulley: [40, 162] }],
+      A: { hy: 98, aR: [178, 194], aL: [-150, -150], fR: [109, 168], fL: [91, 168] },
+      B: { aR: [94, 100] },
+      steps: ['Stai lateral față de scripetele jos și prinde mânerul cu mâna dinspre exterior.', 'Cablul trece prin fața corpului.', 'Ridică brațul lateral până la nivelul umărului, cu cotul ușor îndoit.', 'Coboară lent și termină repetările, apoi schimbă partea.'],
+      tips: ['Cablul păstrează tensiunea pe tot traseul, inclusiv jos.']
+    },
+    {
+      id: 'reardeltfly', name: 'Fluturări inverse cu gantere, aplecat', en: 'Bent-over reverse fly', cat: 'pull', pat: 'pull_i',
+      prim: ['umeri', 'trapez'], sec: [], equip: 'Gantere', eq: 'dumbbell',
+      A: { hip: [88, 103], t: 72, a1: [180, 180], ak: 1, f1: [106, 168] },
+      B: { a1: [176, 172], ak: 0.3 },
+      steps: ['Aplecă-te din șolduri, cu spatele drept și genunchii ușor îndoiți.', 'Lasă ganterele să atârne sub umeri, cu coatele ușor îndoite.', 'Deschide brațele lateral până ajung în linie cu umerii.', 'Coboară controlat.'],
+      tips: ['Folosește greutăți mici; nu te ridica cu trunchiul.']
+    },
+    {
+      id: 'pikepushup', name: 'Flotări pike', en: 'Pike push-up', cat: 'push', pat: 'push_v',
+      prim: ['umeri'], sec: ['triceps', 'piept'], equip: 'Greutatea corpului',
+      A: { hip: [100, 98], t: 135, h1: [130, 168], f1: [66, 160], fo1: 160 },
+      B: { hip: [108, 114] },
+      steps: ['Pornește din flotare și ridică șoldurile sus, ca un V întors.', 'Coboară capul spre podea, în fața palmelor, îndoind coatele.', 'Împinge înapoi până la brațe întinse.'],
+      tips: ['Șoldurile rămân sus tot timpul.']
+    },
+    {
+      id: 'dbkickback', name: 'Extensii triceps cu gantera, aplecat', en: 'Triceps kickback', cat: 'push', pat: 'push_i',
+      prim: ['triceps'], sec: [], equip: 'Gantera', eq: 'dumbbell', eqNear: true,
+      A: { hip: [86, 104], t: 70, a1: [250, 180], f1: [104, 168] },
+      B: { a1: [250, 250] },
+      steps: ['Aplecă-te din șolduri, cu spatele drept, și ridică brațul cu cotul lângă corp.', 'Brațul de sus rămâne paralel cu trunchiul.', 'Întinde cotul și împinge gantera înapoi.', 'Revino controlat, fără să miști brațul de sus.'],
+      tips: ['Greutate mică; doar antebrațul se mișcă.']
+    },
+    {
+      id: 'ohcable', name: 'Extensii triceps peste cap la scripete', en: 'Overhead cable extension', cat: 'push', pat: 'push_i',
+      prim: ['triceps'], sec: [], equip: 'Scripete și frânghie', eq: 'handle', cable: [40, 44],
+      props: [{ post: [34, 10, 172] }, { pulley: [40, 44] }],
+      A: { hip: [96, 100], t: 25, a1: [35, -110], f1: [118, 168], f2: [82, 168] },
+      B: { a1: [35, 45] },
+      steps: ['Prinde frânghia, întoarce-te cu spatele la aparat și fă un pas în față.', 'Aplecă-te puțin, cu frânghia în spatele capului și coatele sus.', 'Întinde coatele, ducând frânghia în față și în sus.', 'Revino controlat în spatele capului.'],
+      tips: ['Coatele rămân îndreptate în față, nu se deschid lateral.']
+    },
+    {
+      id: 'dbcurl', like: 'hammer', name: 'Flexii biceps cu gantere', en: 'Dumbbell curl', cat: 'pull', pat: 'pull_i',
+      prim: ['biceps'], sec: ['antebrate'], equip: 'Gantere',
+      steps: ['Stai drept cu câte o gantera în fiecare mână, palmele înainte.', 'Lipește coatele de corp.', 'Ridică ganterele spre umeri îndoind coatele.', 'Coboară lent până la brațe întinse.'],
+      tips: ['Poți lucra alternativ, câte un braț.']
+    },
+    {
+      id: 'concentration', name: 'Flexii concentrate', en: 'Concentration curl', cat: 'pull', pat: 'pull_i',
+      prim: ['biceps'], sec: [], equip: 'Gantera și bancă', eq: 'dumbbell', eqNear: true,
+      props: [{ pad: [66, 139, 110, 139] }, { leg: [72, 139] }, { leg: [104, 139] }],
+      A: { hip: [90, 133], t: 35, a1: [176, 178], f1: [130, 168] },
+      B: { a1: [176, 22] },
+      steps: ['Așază-te pe bancă și sprijină cotul pe interiorul coapsei.', 'Lasă brațul întins, cu gantera în mână.', 'Ridică gantera spre umăr îndoind cotul.', 'Coboară lent, termină repetările și schimbă brațul.'],
+      tips: ['Cotul rămâne lipit de coapsă.']
+    },
+    {
+      id: 'inclinecurl', like: 'incline', name: 'Flexii pe bancă înclinată', en: 'Incline dumbbell curl', cat: 'pull', pat: 'pull_i',
+      prim: ['biceps'], sec: ['antebrate'], equip: 'Gantere și bancă înclinată',
+      A: { hip: [106, 133], t: -40, a1: [182, 178], f1: [150, 168] },
+      B: { a1: [182, 30] },
+      steps: ['Întinde-te pe banca înclinată la 45°, cu brațele atârnând pe lângă corp.', 'Ridică ganterele spre umeri, fără să miști brațele de sus.', 'Coboară lent până la brațe complet întinse.'],
+      tips: ['Unghiul întinde mai mult bicepsul; folosește greutăți mai mici.']
+    },
+    {
+      id: 'reversecurl', like: 'curl', name: 'Flexii cu priză inversă', en: 'Reverse curl', cat: 'pull', pat: 'pull_i',
+      prim: ['antebrate', 'biceps'], sec: [], equip: 'Bară EZ sau bară dreaptă',
+      steps: ['Ține bara cu palmele în jos, la lățimea umerilor.', 'Lipește coatele de corp.', 'Ridică bara spre umeri îndoind coatele.', 'Coboară lent.'],
+      tips: ['Încheieturile rămân drepte.']
+    },
+    {
+      id: 'chinup', like: 'pullup', name: 'Tracțiuni cu priză supinată', en: 'Chin-up', cat: 'pull', pat: 'pull_v',
+      prim: ['dorsali', 'biceps'], sec: ['antebrate', 'trapez'], equip: 'Bară de tracțiuni',
+      steps: ['Apucă bara la lățimea umerilor, cu palmele spre tine.', 'Pornește din atârnare, cu umerii activi.', 'Trage-te în sus până bărbia trece de bară.', 'Coboară controlat până la brațe întinse.'],
+      tips: ['De obicei e mai ușoară decât tracțiunile cu priză largă.']
+    },
+    {
+      id: 'invrow', name: 'Ramat inversat la bară', en: 'Inverted row', cat: 'pull', pat: 'pull_h',
+      prim: ['dorsali', 'trapez'], sec: ['biceps', 'abdomen'], equip: 'Bară fixă la înălțimea șoldului',
+      props: [{ bar: [50, 92, 82] }],
+      A: { hip: [101.7, 148.6], t: -75, h1: [66, 94], f1: [170, 167], fo1: 0 },
+      B: { hip: [109.6, 132.2], t: -60 },
+      steps: ['Așază-te sub o bară fixă și apuc-o puțin mai larg decât umerii.', 'Întinde picioarele, cu călcâiele pe podea și corpul drept.', 'Trage pieptul spre bară, strângând omoplații.', 'Coboară controlat până la brațe întinse.'],
+      tips: ['Cu genunchii îndoiți e mai ușor; cu picioarele pe o bancă, mai greu.']
+    },
+    {
+      id: 'tbarrow', like: 'bbrow', name: 'Ramat T-bar', en: 'T-bar row', cat: 'pull', pat: 'pull_h',
+      prim: ['dorsali', 'trapez'], sec: ['biceps', 'lombari'], equip: 'Bară T-bar sau landmine', eq: 'tbar', tbar: [30, 170],
+      steps: ['Stai călare pe bară, cu genunchii ușor îndoiți și trunchiul aplecat.', 'Apucă mânerul cu ambele mâini.', 'Trage greutatea spre piept, ducând coatele înapoi.', 'Coboară controlat.'],
+      tips: ['Spatele rămâne drept; nu te ridica cu trunchiul ca să tragi.']
+    },
+    {
+      id: 'goodmorning', like: 'squat', name: 'Good morning cu bara', en: 'Good morning', cat: 'legs', pat: 'hinge',
+      prim: ['femurali', 'fesieri', 'lombari'], sec: [], equip: 'Bară',
+      Bx: { hip: [76, 103], t: 78 },
+      steps: ['Așază bara pe partea de sus a spatelui, ca la genuflexiuni.', 'Cu genunchii ușor îndoiți, împinge șoldurile înapoi și apleacă trunchiul.', 'Coboară până trunchiul ajunge aproape paralel cu podeaua.', 'Ridică-te împingând șoldurile în față.'],
+      tips: ['Începe cu greutate mică; spatele rămâne drept.']
+    },
+    {
+      id: 'superman', name: 'Superman', en: 'Superman', cat: 'legs', pat: 'hinge',
+      prim: ['lombari'], sec: ['fesieri', 'femurali', 'umeri'], equip: 'Saltea',
+      props: [{ mat: [20, 170] }],
+      A: { hip: [90, 164], t: 90, a1: [92, 92], l1: [270, 270], fo1: 200 },
+      B: { t: 84, a1: [78, 76], l1: [262, 262] },
+      steps: ['Întinde-te pe burtă, cu brațele întinse în față.', 'Ridică simultan brațele, pieptul și picioarele de pe podea.', 'Ține 1–2 secunde sus.', 'Coboară lent.'],
+      tips: ['Privirea rămâne în jos, ca gâtul să stea în linie cu spatele.']
+    },
+    {
+      id: 'frontsquat', like: 'squat', name: 'Genuflexiuni frontale', en: 'Front squat', cat: 'legs', pat: 'squat',
+      prim: ['cvadriceps', 'fesieri'], sec: ['abdomen', 'adductori', 'lombari'], equip: 'Bară și rack',
+      A: { hip: [98, 98], t: 3, a1: [95, -70], ar: 1, ak: 0.75, f1: [100, 168] },
+      B: { hip: [78, 132], t: 25 },
+      steps: ['Așază bara pe partea din față a umerilor, cu coatele ridicate în față.', 'Stai cu tălpile la lățimea umerilor.', 'Coboară cu trunchiul cât mai drept, până coapsele trec de paralel.', 'Împinge în sus, păstrând coatele ridicate.'],
+      tips: ['Dacă încheieturile nu permit priza, încrucișează brațele peste bară.']
+    },
+    {
+      id: 'sumodl', like: 'deadlift', name: 'Îndreptări sumo', en: 'Sumo deadlift', cat: 'legs', pat: 'hinge',
+      prim: ['fesieri', 'adductori', 'cvadriceps'], sec: ['femurali', 'lombari', 'trapez', 'antebrate'], equip: 'Bară',
+      Ax: { hip: [82, 134], t: 48 },
+      steps: ['Stai cu tălpile mult depărtate, vârfurile spre exterior, și bara deasupra mijlocului tălpii.', 'Apucă bara între genunchi, cu brațele drepte.', 'Împinge genunchii în afară și ridică bara, cu pieptul sus.', 'Termină în picioare, apoi coboară pe același traseu.'],
+      tips: ['Genunchii merg pe direcția vârfurilor.']
+    },
+    {
+      id: 'trapbar', like: 'deadlift', name: 'Îndreptări cu bara hexagonală', en: 'Trap bar deadlift', cat: 'legs', pat: 'hinge',
+      prim: ['cvadriceps', 'fesieri'], sec: ['femurali', 'lombari', 'trapez', 'antebrate'], equip: 'Bară hexagonală', eq: 'hex',
+      Ax: { hip: [82, 136], t: 42, h1: [104, 154] },
+      steps: ['Intră în mijlocul barei hexagonale, cu tălpile la lățimea șoldurilor.', 'Coboară și apucă mânerele, cu spatele drept.', 'Împinge în podea și ridică-te până stai drept.', 'Coboară controlat pe același traseu.'],
+      tips: ['E o variantă mai prietenoasă cu spatele decât îndreptările clasice.']
+    },
+    {
+      id: 'reverselunge', name: 'Fandări înapoi', en: 'Reverse lunge', cat: 'legs', pat: 'lunge',
+      prim: ['cvadriceps', 'fesieri'], sec: ['femurali'], equip: 'Greutatea corpului sau gantere', eq: 'dumbbell',
+      K: [
+        { hip: [101, 98], t: 2, a1: [180, 180], f1: [104, 168], f2: [98, 168], fo1: 90, fo2: 90 },
+        { hip: [81, 134], t: 4, f2: [60, 162], fo2: 170 }
+      ],
+      order: [0, 1], dur: [0.85, 0.85], hold: [0.3, 0.2], thumbK: 1,
+      cap: ['Pășește înapoi și coboară', 'Împinge prin piciorul din față și revino'],
+      steps: ['Stai drept, cu tălpile la lățimea șoldurilor.', 'Fă un pas mare înapoi și coboară până genunchiul din spate aproape atinge podeaua.', 'Împinge prin piciorul din față și revino lângă el.', 'Alternează picioarele.'],
+      tips: ['E mai blândă cu genunchii decât fandarea în față.']
+    },
+    {
+      id: 'laterallunge', name: 'Fandări laterale', en: 'Lateral lunge', cat: 'legs', pat: 'lunge', view: 'front',
+      prim: ['cvadriceps', 'fesieri', 'adductori'], sec: ['femurali'], equip: 'Greutatea corpului',
+      A: { cx: 100, hy: 98, hR: [100, 80], hL: [100, 80], fR: [128, 168], fL: [72, 168] },
+      B: { cx: 114, hy: 124, hR: [114, 106], hL: [114, 106] },
+      steps: ['Stai cu picioarele mult depărtate, vârfurile înainte.', 'Mută greutatea pe un picior și coboară, cu șoldurile înapoi; celălalt picior rămâne întins.', 'Împinge prin piciorul îndoit și revino la mijloc.', 'Alternează părțile.'],
+      tips: ['Călcâiul piciorului îndoit rămâne pe podea.']
+    },
+    {
+      id: 'sumosquat', name: 'Genuflexiuni sumo cu gantera', en: 'Sumo squat', cat: 'legs', pat: 'squat', view: 'front',
+      prim: ['adductori', 'fesieri', 'cvadriceps'], sec: [], equip: 'Gantera sau kettlebell', eq: 'kettlebell', eqRight: true,
+      A: { hy: 100, hR: [100, 107], hL: [100, 107], fR: [126, 168], fL: [74, 168] },
+      B: { hy: 132, hR: [100, 139], hL: [100, 139] },
+      steps: ['Stai cu picioarele mult depărtate, vârfurile spre exterior, și ține greutatea între picioare.', 'Coboară vertical, împingând genunchii în afară.', 'Oprește-te când coapsele ajung paralel cu podeaua.', 'Împinge în sus, strângând fesierii.'],
+      tips: ['Trunchiul rămâne drept, greutatea atârnă vertical.']
+    },
+    {
+      id: 'airsquat', like: 'goblet', name: 'Genuflexiuni fără greutate', en: 'Bodyweight squat', cat: 'legs', pat: 'squat',
+      prim: ['cvadriceps', 'fesieri'], sec: ['adductori', 'abdomen'], equip: 'Greutatea corpului', eq: null,
+      Ax: { a1: [90, 90], ar: 0 },
+      steps: ['Stai cu tălpile la lățimea umerilor și brațele întinse în față.', 'Împinge șoldurile înapoi și coboară, cu pieptul sus.', 'Coboară până coapsele trec de paralel, cu călcâiele pe podea.', 'Împinge în sus prin toată talpa.'],
+      tips: ['Un exercițiu bun de încălzire înainte de genuflexiunile cu greutate.']
+    },
+    {
+      id: 'wallsit', name: 'Scaunul la perete', en: 'Wall sit', cat: 'legs', pat: 'squat',
+      prim: ['cvadriceps'], sec: ['fesieri'], equip: 'Perete', tempo: [0, 1.6, 0, 1.6],
+      props: [{ pad: [66, 50, 66, 172, 60] }],
+      A: { hip: [78, 133], t: 0, a1: [150, 95], l1: [90, 180] },
+      B: { hip: [78, 133.6] },
+      steps: ['Sprijină spatele de perete și coboară până coapsele ajung paralel cu podeaua.', 'Genunchii sunt deasupra gleznelor, la 90°.', 'Menține poziția 30–60 de secunde, respirând normal.'],
+      tips: ['Nu te sprijini cu mâinile pe coapse.']
+    },
+    {
+      id: 'glutebridge', name: 'Punte pentru fesieri', en: 'Glute bridge', cat: 'legs', pat: 'hinge',
+      prim: ['fesieri'], sec: ['femurali', 'lombari'], equip: 'Saltea',
+      props: [{ mat: [30, 150] }],
+      A: { hip: [100, 164], t: -90, a1: [92, 90], f1: [132, 168] },
+      B: { hip: [96, 146], t: -121 },
+      steps: ['Întinde-te pe spate cu genunchii îndoiți și tălpile pe podea, aproape de fesieri.', 'Împinge prin călcâie și ridică șoldurile până corpul e drept de la umeri la genunchi.', 'Strânge fesierii o secundă sus.', 'Coboară controlat.'],
+      tips: ['Pentru mai multă greutate, pune o gantera sau o bară pe șolduri.']
+    },
+    {
+      id: 'nordic', name: 'Flexii nordice', en: 'Nordic hamstring curl', cat: 'legs', pat: 'legs_i',
+      prim: ['femurali'], sec: ['fesieri', 'gambe'], equip: 'Partener sau suport pentru glezne',
+      props: [{ mat: [40, 120] }, { disc: [56, 160, 5] }],
+      A: { hip: [90, 130], t: 0, a1: [180, 178], f1: [58, 166], fo1: 250 },
+      B: { hip: [119.5, 145.4], t: 55, a1: [140, 132] },
+      steps: ['Îngenunchează cu gleznele fixate sub un suport sau ținute de un partener.', 'Cu corpul drept de la genunchi la cap, lasă-te încet în față.', 'Frânează căderea cât poți cu spatele coapselor, apoi prinde-te în palme.', 'Împinge-te ușor din palme și revino sus.'],
+      tips: ['E un exercițiu foarte greu; începe cu puține repetări.']
+    },
+    {
+      id: 'donkeykick', name: 'Ridicări de picior din patrupedie', en: 'Donkey kick', cat: 'legs', pat: 'legs_i',
+      prim: ['fesieri'], sec: ['femurali'], equip: 'Saltea',
+      props: [{ mat: [30, 120] }],
+      A: { hip: [82, 128], t: 90, a1: [180, 180], l1: [180, 270], l2: [180, 270], fo1: 250, fo2: 250 },
+      B: { l1: [290, 380], fo1: 290 },
+      steps: ['Sprijină-te în palme și genunchi, cu palmele sub umeri și genunchii sub șolduri.', 'Ridică un picior în spate și în sus, cu genunchiul îndoit la 90°.', 'Oprește-te când coapsa ajunge în linie cu trunchiul.', 'Coboară controlat, termină repetările și schimbă piciorul.'],
+      tips: ['Nu arcui zona lombară; mișcarea e doar din șold.']
+    },
+    {
+      id: 'pullthrough', like: 'swing', name: 'Pull-through la scripete', en: 'Cable pull-through', cat: 'legs', pat: 'hinge',
+      prim: ['fesieri', 'femurali'], sec: ['lombari'], equip: 'Scripete jos și frânghie', eq: 'handle', cable: [30, 160], tempo: null,
+      props: [{ post: [24, 90, 172] }, { pulley: [30, 160] }],
+      Bx: { a1: [172, 176] },
+      steps: ['Stai cu spatele la scripetele jos și prinde frânghia printre picioare.', 'Fă câțiva pași în față și împinge șoldurile înapoi, cu spatele drept.', 'Împinge șoldurile în față până stai drept, strângând fesierii.', 'Revino controlat.'],
+      tips: ['Brațele doar țin frânghia; mișcarea vine din șolduri.']
+    },
+    {
+      id: 'singlelegrdl', name: 'Îndreptări românești pe un picior', en: 'Single-leg Romanian deadlift', cat: 'legs', pat: 'hinge',
+      prim: ['femurali', 'fesieri'], sec: ['lombari', 'abdomen'], equip: 'Gantere', eq: 'dumbbell',
+      A: { hip: [99, 98], t: 0, a1: [180, 180], l1: [182, 180], f2: [102, 168], fo1: 120 },
+      B: { hip: [76, 104], t: 80, a1: [180, 180], l1: [262, 262], fo1: 172 },
+      steps: ['Stai pe un picior, cu genunchiul ușor îndoit și greutățile în mâini.', 'Împinge șoldul înapoi și apleacă trunchiul, ridicând celălalt picior în spate.', 'Coboară până trunchiul e aproape paralel cu podeaua.', 'Revino sus, termină repetările și schimbă piciorul.'],
+      tips: ['Șoldurile rămân la același nivel, nu te răsuci.']
+    },
+    {
+      id: 'captainschair', name: 'Ridicări de genunchi cu sprijin pe antebrațe', en: 'Captain’s chair knee raise', cat: 'core', pat: 'core_f',
+      prim: ['abdomen'], sec: ['oblici'], equip: 'Aparat cu sprijin pe antebrațe', armPads: true,
+      props: [{ pad: [88, 56, 88, 120, 30] }, { post: [80, 40, 172] }],
+      A: { hip: [98, 100], t: 0, a1: [180, 90], l1: [178, 180] },
+      B: { l1: [95, 180] },
+      steps: ['Sprijină antebrațele pe pernițe și spatele de spătar, cu picioarele atârnând.', 'Ridică genunchii spre piept, strângând abdomenul.', 'Coboară lent, fără să balansezi picioarele.'],
+      tips: ['Variantă mai grea: cu picioarele întinse.']
+    },
+    {
+      id: 'deadbug', name: 'Gândacul mort', en: 'Dead bug', cat: 'core', pat: 'core_s',
+      prim: ['abdomen'], sec: ['oblici'], equip: 'Saltea',
+      props: [{ mat: [30, 150] }],
+      A: { hip: [100, 164], t: -90, a1: [0, 0], a2: [0, 0], l1: [0, 90], l2: [0, 90] },
+      B: { a1: [-80, -80], l2: [80, 85] },
+      steps: ['Întinde-te pe spate, cu brațele spre tavan și genunchii la 90° deasupra șoldurilor.', 'Lipește zona lombară de podea.', 'Întinde simultan un braț în spate și piciorul opus în față, aproape de podea.', 'Revino și alternează părțile.'],
+      tips: ['Zona lombară nu se dezlipește de podea.']
+    },
+    {
+      id: 'birddog', name: 'Câinele de vânătoare', en: 'Bird dog', cat: 'core', pat: 'core_s',
+      prim: ['abdomen', 'lombari'], sec: ['fesieri', 'umeri'], equip: 'Saltea',
+      props: [{ mat: [30, 130] }],
+      A: { hip: [82, 128], t: 90, a1: [180, 180], a2: [180, 180], l1: [180, 270], l2: [180, 270], fo1: 250, fo2: 250 },
+      B: { a1: [88, 88], l2: [272, 272], fo2: 272 },
+      steps: ['Sprijină-te în palme și genunchi, cu spatele drept.', 'Întinde simultan un braț în față și piciorul opus în spate.', 'Ține 1–2 secunde, cu bazinul nemișcat.', 'Revino și alternează părțile.'],
+      tips: ['Imaginează-ți un pahar cu apă pe spate, care nu trebuie să se verse.']
+    },
+    {
+      id: 'hollowhold', name: 'Poziția hollow', en: 'Hollow body hold', cat: 'core', pat: 'core_s',
+      prim: ['abdomen'], sec: [], equip: 'Saltea', tempo: [0, 1.6, 0, 1.6],
+      props: [{ mat: [30, 150] }],
+      A: { hip: [100, 164], t: -78, nk: 14, a1: [-72, -70], l1: [78, 78] },
+      B: { hip: [100, 164.4], t: -77.5 },
+      steps: ['Întinde-te pe spate cu brațele întinse peste cap.', 'Ridică umerii și picioarele întinse de pe podea, cu zona lombară lipită de sol.', 'Menține 20–40 de secunde.'],
+      tips: ['Variantă mai ușoară: cu genunchii îndoiți.']
+    },
+    {
+      id: 'situp', like: 'crunch', name: 'Abdomene complete', en: 'Sit-up', cat: 'core', pat: 'core_f',
+      prim: ['abdomen'], sec: ['oblici'], equip: 'Saltea',
+      Bx: { t: -15, nk: 8 },
+      steps: ['Întinde-te pe spate, cu genunchii îndoiți și tălpile fixate.', 'Ridică trunchiul până ajungi în șezut.', 'Coboară controlat, vertebră cu vertebră.'],
+      tips: ['Nu te trage de gât cu mâinile.']
+    },
+    {
+      id: 'reversecrunch', name: 'Abdomene inverse', en: 'Reverse crunch', cat: 'core', pat: 'core_f',
+      prim: ['abdomen'], sec: [], equip: 'Saltea',
+      props: [{ mat: [30, 150] }],
+      A: { hip: [100, 164], t: -90, a1: [92, 90], l1: [8, 98] },
+      B: { hip: [98, 158], t: -100, l1: [-36, 52] },
+      steps: ['Întinde-te pe spate, cu brațele pe podea și genunchii îndoiți deasupra șoldurilor.', 'Adu genunchii spre piept, ridicând bazinul de pe podea.', 'Coboară lent.'],
+      tips: ['Mișcarea vine din abdomen, nu din balans.']
+    },
+    {
+      id: 'lyinglegraise', name: 'Ridicări de picioare culcat', en: 'Lying leg raise', cat: 'core', pat: 'core_f',
+      prim: ['abdomen'], sec: [], equip: 'Saltea',
+      props: [{ mat: [30, 150] }],
+      A: { hip: [100, 164], t: -90, a1: [92, 90], l1: [86, 86], fo1: 176 },
+      B: { l1: [6, 6], fo1: 96 },
+      steps: ['Întinde-te pe spate, cu brațele pe lângă corp și picioarele întinse.', 'Ridică picioarele până ajung vertical.', 'Coboară lent, fără să atingi podeaua între repetări.'],
+      tips: ['Zona lombară rămâne lipită de podea.']
+    },
+    {
+      id: 'flutterkicks', name: 'Forfecuțe', en: 'Flutter kicks', cat: 'core', pat: 'core_f',
+      prim: ['abdomen'], sec: ['cvadriceps'], equip: 'Saltea', tempo: [0, 0.3, 0, 0.3],
+      props: [{ mat: [30, 150] }],
+      A: { hip: [100, 164], t: -84, nk: 10, a1: [92, 90], l1: [74, 74], l2: [84, 84], fo1: 164, fo2: 174 },
+      B: { l1: [84, 84], l2: [74, 74], fo1: 174, fo2: 164 },
+      steps: ['Întinde-te pe spate, cu picioarele întinse și ușor ridicate.', 'Ridică și coboară alternativ picioarele, în mișcări scurte și rapide.', 'Continuă 20–40 de secunde.'],
+      tips: ['Zona lombară rămâne lipită de podea.']
+    },
+    {
+      id: 'vup', name: 'Abdomene în V', en: 'V-up', cat: 'core', pat: 'core_f',
+      prim: ['abdomen'], sec: ['oblici'], equip: 'Saltea',
+      props: [{ mat: [30, 150] }],
+      A: { hip: [100, 164], t: -90, a1: [-84, -84], l1: [88, 88], fo1: 178 },
+      B: { t: -40, a1: [40, 40], l1: [34, 34], fo1: 124 },
+      steps: ['Întinde-te pe spate, cu brațele peste cap și picioarele întinse.', 'Ridică simultan trunchiul și picioarele, încercând să atingi vârfurile.', 'Coboară controlat.'],
+      tips: ['Variantă mai ușoară: cu genunchii îndoiți.']
+    },
+    {
+      id: 'bandpullapart', name: 'Depărtări cu bandă elastică', en: 'Band pull-apart', cat: 'pull', pat: 'pull_i',
+      prim: ['umeri', 'trapez'], sec: [], equip: 'Bandă elastică', eq: 'band',
+      A: { hip: [100, 98], t: 0, a1: [92, 90], ak: 1, f1: [102, 168] },
+      B: { a1: [96, 96], ak: 0.3 },
+      steps: ['Ține banda în față, la nivelul umerilor, cu brațele întinse.', 'Întinde banda depărtând brațele lateral.', 'Strânge omoplații când banda atinge pieptul.', 'Revino controlat.'],
+      tips: ['Un exercițiu bun de încălzire pentru umeri.']
+    },
+    {
+      id: 'trxrow', like: 'invrow', name: 'Ramat la TRX', en: 'TRX row', cat: 'pull', pat: 'pull_h',
+      prim: ['dorsali', 'trapez'], sec: ['biceps', 'abdomen'], equip: 'Chingi TRX', cable: [60, 4], props: [{ post: [60, 0, 4] }],
+      steps: ['Prinde mânerele și lasă-te pe spate, cu corpul drept și călcâiele pe podea.', 'Trage pieptul spre mâini, strângând omoplații.', 'Coboară controlat până la brațe întinse.'],
+      tips: ['Cu cât stai mai aplecat, cu atât e mai greu.']
+    },
+
+    /* ---- EXTRA CARDIO ---- */
+    {
+      id: 'boxjump', name: 'Sărituri pe cutie', en: 'Box jump', cat: 'cardio', pat: 'card_e',
+      prim: ['cvadriceps', 'fesieri'], sec: ['gambe', 'femurali'], equip: 'Cutie pliometrică',
+      props: [{ rect: [108, 130, 48, 42] }],
+      K: [
+        { hip: [80, 98], t: 2, a1: [180, 180], f1: [82, 168], fo1: 90 },
+        { hip: [62, 124], t: 35, a1: [210, 205] },
+        { hip: [98, 70], t: 10, a1: [40, 20], f1: [106, 112], fo1: 130 },
+        { hip: [102, 92], t: 25, a1: [100, 80], f1: [120, 126], fo1: 90 },
+        { hip: [116, 58], t: 2, a1: [180, 180], f1: [118, 126] }
+      ],
+      order: [0, 1, 2, 3, 4], dur: [0.5, 0.3, 0.3, 0.45, 0.9], hold: [0.3, 0.05, 0, 0.05, 0.3], thumbK: 2,
+      cap: ['Coboară ușor și du brațele înapoi', 'Sari exploziv', 'Aterizează moale pe cutie', 'Ridică-te în picioare', 'Coboară pășind, nu sărind'],
+      steps: ['Stai în fața cutiei, la o distanță mică.', 'Coboară ușor și du brațele înapoi.', 'Sari exploziv și aterizează moale pe cutie, cu genunchii îndoiți.', 'Ridică-te și coboară pășind, nu sărind.'],
+      tips: ['Alege o cutie la care aterizezi sigur; înălțimea vine cu timpul.'],
+      dose: [['Serii', '5–8 sărituri, 3–4 serii, cu pauză completă.'], ['Intervale', '20 s lucru, 40 s pauză, de 6 ori.']]
+    },
+    {
+      id: 'sledpush', name: 'Împinsul saniei', en: 'Sled push', cat: 'cardio', pat: 'card_e',
+      prim: ['cvadriceps', 'fesieri'], sec: ['gambe', 'umeri', 'abdomen'], equip: 'Sanie cu greutăți', period: 1.1, thumbTh: 1.5708,
+      props: [{ rect: [140, 146, 40, 22] }, { post: [146, 104, 146] }, { post: [154, 104, 146] }],
+      fn: th => {
+        const leg = a => { const t1 = 160 - 28 * Math.sin(a); return [t1, t1 + 22 + 60 * Math.pow(Math.max(0, Math.cos(a)), 1.4)]; };
+        const L1 = leg(th), L2 = leg(th + Math.PI);
+        const drop = l => -S.th * Math.cos(l[0] * RAD) - S.shin * Math.cos(l[1] * RAD);
+        return { hip: [92, 166 - Math.max(drop(L1), drop(L2))], t: 52, h1: [146, 106], l1: L1, l2: L2, fo1: L1[1] - 80, fo2: L2[1] - 80 };
+      },
+      steps: ['Apucă mânerele saniei cu brațele aproape întinse și apleacă-te în față.', 'Împinge cu pași scurți și puternici, din vârfuri.', 'Ține spatele drept și privirea puțin în față.', 'Împinge pe o distanță scurtă, apoi odihnește-te.'],
+      tips: ['Unghiul trunchiului rămâne același pe toată distanța.'],
+      dose: [['Intervale', '15–25 m de împins, 60–90 s pauză, de 6–8 ori.'], ['Încălzire', '2 ture ușoare înainte de genuflexiuni.']]
+    },
+    {
+      id: 'inclinewalk', name: 'Mers alert pe bandă înclinată', en: 'Incline treadmill walk', cat: 'cardio', pat: 'card_m',
+      prim: ['fesieri', 'gambe'], sec: ['cvadriceps', 'femurali'], equip: 'Bandă de alergare', period: 1.3, thumbTh: 1.5708,
+      props: [{ pad: [36, 162, 164, 150, 40] }, { leg: [44, 166] }, { post: [162, 84, 152] }, { pad: [162, 84, 140, 88, 44] }],
+      fn: th => {
+        const deck = x => 162 - (x - 36) * 12 / 128 - 5;
+        const leg = a => { const t1 = 172 - 22 * Math.sin(a); return [t1, t1 + 6 + 40 * Math.pow(Math.max(0, Math.cos(a)), 1.6)]; };
+        const L1 = leg(th), L2 = leg(th + Math.PI);
+        const ank = l => [98 + S.th * Math.sin(l[0] * RAD) + S.shin * Math.sin(l[1] * RAD), -S.th * Math.cos(l[0] * RAD) - S.shin * Math.cos(l[1] * RAD)];
+        const a1 = ank(L1), a2 = ank(L2);
+        const hy = Math.min(deck(a1[0]) - a1[1], deck(a2[0]) - a2[1]);
+        const arm = a => { const ua = 180 + 22 * Math.sin(a); return [ua, ua - 40]; };
+        return { hip: [98, hy], t: 6, l1: L1, l2: L2, a1: arm(th), a2: arm(th + Math.PI), fo1: L1[1] - 96, fo2: L2[1] - 96 };
+      },
+      steps: ['Pornește banda la viteză mică și crește înclinarea treptat (de exemplu 8–12%).', 'Mergi alert, cu pași normali și trunchiul drept.', 'Balansează brațele natural; nu te ține de mânere.', 'La final, scade înclinarea și viteza treptat.'],
+      tips: ['Dacă trebuie să te ții de mânere, înclinarea e prea mare.'],
+      dose: [['Ritm constant', '20–40 min, înclinare 8–12%, viteză 4,5–6 km/h.'], ['Intervale', '2 min înclinare mare, 1 min ușor, de 6–8 ori.']]
+    },
+    {
+      id: 'medslam', name: 'Aruncări cu mingea medicinală', en: 'Medicine ball slam', cat: 'cardio', pat: 'card_e',
+      prim: ['abdomen', 'dorsali'], sec: ['umeri', 'fesieri', 'cvadriceps'], equip: 'Minge medicinală fără ricoșeu', eq: 'ball',
+      K: [
+        { hip: [100, 96], t: -5, a1: [8, 4], f1: [102, 168] },
+        { hip: [78, 124], t: 55, a1: [150, 160] }
+      ],
+      order: [0, 1], dur: [0.35, 0.9], hold: [0.3, 0.15], thumbK: 0,
+      cap: ['Aruncă exploziv mingea în podea', 'Ridic-o și du-o din nou deasupra capului'],
+      steps: ['Ține mingea cu ambele mâini și ridic-o deasupra capului, pe vârfuri.', 'Aruncă-o cu toată forța în podea, în fața ta, îndoind șoldurile.', 'Ridică mingea, cu spatele drept.', 'Repetă ritmic.'],
+      tips: ['Folosește o minge fără ricoșeu, făcută pentru aruncări.'],
+      dose: [['Intervale', '20 s lucru, 40 s pauză, de 6–8 ori.'], ['Serii', '10–15 aruncări, 3–4 serii.']]
+    },
+    {
+      id: 'wallball', name: 'Aruncări la perete cu mingea', en: 'Wall ball', cat: 'cardio', pat: 'card_e',
+      prim: ['cvadriceps', 'fesieri', 'umeri'], sec: ['abdomen', 'triceps'], equip: 'Minge medicinală și perete', eq: 'ball',
+      props: [{ pad: [162, 10, 162, 172, 70] }, { disc: [157, 30, 5] }],
+      K: [
+        { hip: [80, 134], t: 25, a1: [165, 15], ar: 1, f1: [100, 168] },
+        { hip: [99, 96], t: -4, a1: [-150, -165], f1: [101, 166], fo1: 115 }
+      ],
+      order: [0, 1], dur: [0.5, 0.75], hold: [0.1, 0.1], thumbK: 0,
+      cap: ['Împinge din picioare și aruncă mingea spre țintă', 'Prinde mingea și coboară direct în genuflexiune'],
+      steps: ['Stai la un pas de perete, cu mingea la piept.', 'Coboară în genuflexiune.', 'Ridică-te exploziv și aruncă mingea spre o țintă înaltă pe perete.', 'Prinde mingea și coboară direct în următoarea genuflexiune.'],
+      tips: ['Mișcarea e continuă; picioarele dau forța aruncării.'],
+      dose: [['Serii', '15–20 de aruncări, 3–4 serii.'], ['Intervale', '30 s lucru, 30 s pauză, de 6 ori.']]
     }
   ];
 
+
+
+  /* ---------- variants: an exercise can reuse another exercise's motion ---------- */
+  EX.forEach(ex => { if (ex.like) { if (ex.A) ex.__ownA = true; if (ex.B) ex.__ownB = true; } });
+  const OWN = ['id', 'like', 'name', 'en', 'cat', 'pat', 'prim', 'sec', 'equip', 'steps', 'tips', 'dose', 'Ax', 'Bx'];
+  EX.forEach(ex => {
+    if (!ex.like) return;
+    const base = EX.find(b => b.id === ex.like);
+    Object.keys(base).forEach(k => { if (!OWN.includes(k) && !['A', 'B', 'P0', 'P1'].includes(k) && !(k in ex)) ex[k] = base[k]; });
+    if (base.A) {
+      ex.A = Object.assign({}, ex.__ownA ? ex.A : base.A, ex.Ax || {});
+      ex.B = Object.assign({}, ex.__ownB ? ex.B : base.B, ex.Bx || {});
+    }
+  });
 
   /* ---------- cues: tracked joint, phase captions, which phase is the effort ---------- */
   const CUES = {
@@ -974,6 +1753,69 @@ main { max-width: 640px; margin: 0 auto; padding: 0 20px 92px; }
     sidebend: ['wR', 'Înclină-te spre gantera', 'Revino la vertical', 1],
     bicycle: [null, 'Cotul spre genunchiul opus', 'Schimbă partea', null],
     farmer: [null, 'Pași scurți, corpul drept', 'Umerii trași înapoi', null],
+    machchest: ['w1', 'Împinge mânerele în față', 'Revino controlat', 0],
+    pecdeck: ['w1', 'Adu brațele în față', 'Deschide controlat', 0],
+    machshoulder: ['w1', 'Împinge mânerele deasupra capului', 'Coboară la nivelul umerilor', 0],
+    assistedpullup: ['sh', 'Trage-te în sus', 'Coboară controlat', 0, [30, 0]],
+    machrow: ['w1', 'Trage mânerele spre tine', 'Întinde brațele controlat', 0],
+    reversefly: ['w1', 'Deschide brațele lateral', 'Revino controlat în față', 0],
+    cablecurl: ['w1', 'Ridică bara spre umeri', 'Coboară lent', 0],
+    preacher: ['w1', 'Ridică bara', 'Coboară lent, aproape complet', 0],
+    straightpulldown: ['w1', 'Coboară bara cu brațele întinse', 'Revino controlat sus', 0],
+    hacksquat: ['hip', 'Coboară controlat', 'Împinge platforma prin toată talpa', 1, [-20, 0]],
+    smithsquat: ['w1', 'Coboară, bara merge pe verticală', 'Împinge prin toată talpa', 1],
+    seatedlegcurl: ['a1', 'Trage călcâiele sub scaun', 'Revino controlat', 0],
+    abductor: [null, 'Împinge genunchii în lateral', 'Revino controlat', 0],
+    adductor: [null, 'Strânge genunchii', 'Deschide controlat', 0],
+    seatedcalf: ['a1', 'Ridică-te pe vârfuri', 'Coboară lent, cu întindere', 0],
+    kickback: ['a1', 'Împinge piciorul înapoi', 'Revino controlat', 0],
+    backext: ['head', 'Coboară trunchiul controlat', 'Ridică-te până corpul e drept', 1],
+    cablecrunch: ['head', 'Rulează trunchiul în jos, spre genunchi', 'Revino controlat', 0],
+    dbbench: ['w1', 'Coboară ganterele la piept', 'Împinge în sus', 1],
+    inclinebench: ['w1', 'Coboară bara spre partea de sus a pieptului', 'Împinge bara în sus', 1],
+    declinebench: ['w1', 'Coboară bara la piept', 'Împinge bara în sus', 1],
+    dbfly: ['w1', 'Deschide brațele în arc', 'Adu ganterele deasupra pieptului', 1],
+    lowfly: ['w1', 'Adu mânerele în sus și în față', 'Coboară controlat', 0],
+    pullover: ['w1', 'Coboară gantera în spatele capului', 'Readu-o deasupra pieptului', 1],
+    declinepushup: ['sh', 'Coboară pieptul', 'Împinge podeaua', 1, [-12, -20]],
+    benchdip: ['sh', 'Coboară îndoind coatele', 'Împinge înapoi sus', 1, [22, 0]],
+    uprightrow: ['w1', 'Trage bara în sus, coatele în lateral', 'Coboară controlat', 0],
+    cablelateral: ['wR', 'Ridică brațul lateral', 'Coboară lent', 0],
+    reardeltfly: ['w1', 'Deschide brațele lateral', 'Coboară controlat', 0],
+    pikepushup: ['head', 'Coboară capul spre podea', 'Împinge înapoi sus', 1],
+    dbkickback: ['w1', 'Întinde cotul, gantera înapoi', 'Revino controlat', 0],
+    ohcable: ['w1', 'Întinde coatele în față', 'Revino în spatele capului', 0],
+    concentration: ['w1', 'Ridică gantera spre umăr', 'Coboară lent', 0],
+    inclinecurl: ['w1', 'Ridică ganterele', 'Coboară lent, complet', 0],
+    invrow: ['sh', 'Trage pieptul spre bară', 'Coboară controlat', 0, [0, 22]],
+    trxrow: ['sh', 'Trage pieptul spre mâini', 'Coboară controlat', 0, [0, 22]],
+    tbarrow: ['w1', 'Trage greutatea spre piept', 'Coboară controlat', 0],
+    goodmorning: ['head', 'Împinge șoldurile înapoi, apleacă trunchiul', 'Ridică-te, șoldurile în față', 1],
+    superman: ['w1', 'Ridică brațele și picioarele', 'Coboară lent', 0],
+    frontsquat: ['w1', 'Coboară cu trunchiul drept', 'Împinge prin toată talpa', 1],
+    sumodl: ['w1', 'Ridică bara, genunchii în afară', 'Coboară pe același traseu', 0],
+    trapbar: ['w1', 'Împinge în podea și ridică-te', 'Coboară controlat', 0],
+    laterallunge: ['hc', 'Coboară pe un picior', 'Împinge și revino la mijloc', 1, [0, -30]],
+    sumosquat: ['hc', 'Coboară, genunchii în afară', 'Împinge în sus', 1, [0, -40]],
+    airsquat: ['hip', 'Coboară, cu șoldurile înapoi', 'Împinge prin toată talpa', 1],
+    wallsit: [null, 'Coapsele paralele cu podeaua', 'Spatele lipit de perete, respiră normal', null],
+    glutebridge: ['hip', 'Ridică șoldurile', 'Coboară controlat', 0],
+    nordic: ['head', 'Lasă-te încet în față', 'Împinge-te din palme și revino', 1],
+    donkeykick: ['a1', 'Ridică piciorul în spate și în sus', 'Coboară controlat', 0],
+    pullthrough: ['w1', 'Împinge șoldurile în față', 'Revino controlat, șoldurile înapoi', 1],
+    singlelegrdl: ['head', 'Apleacă-te, piciorul liber în spate', 'Revino sus', 1],
+    captainschair: ['a1', 'Ridică genunchii spre piept', 'Coboară lent', 0],
+    deadbug: [null, 'Întinde brațul și piciorul opus', 'Revino și schimbă partea', null],
+    birddog: [null, 'Brațul în față, piciorul opus în spate', 'Revino și schimbă partea', null],
+    hollowhold: [null, 'Umerii și picioarele sus', 'Zona lombară lipită de podea', null],
+    situp: ['head', 'Ridică trunchiul până în șezut', 'Coboară controlat', 0],
+    reversecrunch: ['a1', 'Adu genunchii spre piept', 'Coboară lent', 0],
+    lyinglegraise: ['a1', 'Ridică picioarele întinse', 'Coboară lent', 0],
+    flutterkicks: [null, 'Picioarele sus-jos, alternativ', 'Mișcări scurte și rapide', null],
+    vup: ['head', 'Ridică trunchiul și picioarele', 'Coboară controlat', 0],
+    bandpullapart: ['w1', 'Întinde banda depărtând brațele', 'Revino controlat', 0],
+    sledpush: [null, 'Pași scurți și puternici', 'Unghiul trunchiului constant', null],
+    inclinewalk: [null, 'Pași normali, trunchiul drept', 'Nu te ține de mânere', null],
     sideplank: ['hc', 'Coboară ușor șoldul', 'Ridică șoldul până corpul e drept', 1, [0, -24]],
     woodchop: ['wR', 'Trage în diagonală, de sus în jos', 'Revino controlat', 0],
     obliqueknee: ['kR', 'Ridică genunchii spre o parte', 'Coboară controlat', 0],
@@ -990,7 +1832,9 @@ main { max-width: 640px; margin: 0 auto; padding: 0 20px 92px; }
     jumprope: ['rp', 'Sari ușor, pe vârfuri', 'Rotește coarda din încheieturi', null],
     battleropes: [null, 'Valuri alternative, rapide', 'Șoldurile jos, trunchiul stabil', null]
   };
-  EX.forEach(ex => { const c = CUES[ex.id]; ex.track = c[0]; ex.ph = [c[1], c[2]]; ex.conc = c[3]; ex.toff = c[4] || null; });
+  EX.forEach(ex => { const c = CUES[ex.id] || CUES[ex.like] || [null, '', '', null]; ex.track = c[0]; ex.ph = [c[1], c[2]]; ex.conc = c[3]; ex.toff = c[4] || null; });
+
+  EX.forEach(ex => { ex.kit = Object.keys(KIT_OF).find(k => KIT_OF[k].split(' ').includes(ex.id)) || 'free'; });
 
   /* ---------- pose interpolation ---------- */
   const DEF = { t: 0, nk: 0, shr: 0, ak: 1, uak: 1, lean: 0 };
@@ -1148,6 +1992,7 @@ main { max-width: 640px; margin: 0 auto; padding: 0 20px 92px; }
     if (ms.includes('femurali')) s += stripe(j.hip, j.k1, 0.14, 0.85, 1, 1.8, 4.5);
     if (ms.includes('gambe')) s += stripe(j.k1, j.a1, 0.1, 0.55, 1, 1.6, 4.5);
     if (ms.includes('fesieri')) s += ci(add(add(j.hip, dir(j.t - 90), 3.2), dir(j.t), 1), 5.2, 'f-musc');
+    if (ms.includes('adductori')) s += stripe(j.hip, j.k1, 0.15, 0.8, 0, 0, 3);
     return s;
   }
   function musArm(j, ms) {
@@ -1239,6 +2084,7 @@ main { max-width: 640px; margin: 0 auto; padding: 0 20px 92px; }
       if (o.pulley) return ci(o.pulley, 4, 'f-pulley');
       if (o.disc) return ci([o.disc[0], o.disc[1]], o.disc[2], 'f-boxc');
       if (o.mat) return `<rect x="${o.mat[0]}" y="${G - 3}" width="${o.mat[1]}" height="3" rx="1.5" class="f-box"/>`;
+      if (o.rack) return ln([o.rack[0], o.rack[1]], [o.rack[0], G], 'f-frame', 4);
       return '';
     }).join('');
   }
@@ -1251,6 +2097,9 @@ main { max-width: 640px; margin: 0 auto; padding: 0 20px 92px; }
       case 'kettlebell': return far ? '' : ci(add(W, [0, 7]), 7.5, 'f-eq') + ci(W, 2.6, 'f-hub');
       case 'wheel': return far ? '' : ci(add(W, [0, 3]), 6.5, 'f-eq') + ci(add(W, [0, 3]), 2, 'f-hub');
       case 'handle': return far ? '' : ln(add(W, [-4.5, 0]), add(W, [4.5, 0]), 'f-steel', 3.5);
+      case 'hex': return far ? '' : ci(W, 13, 'f-plate') + ci(W, 2.8, 'f-hub');
+      case 'ball': return far ? '' : ci(W, 9, 'f-plate');
+      case 'band': return '';
     }
     return '';
   }
@@ -1260,7 +2109,8 @@ main { max-width: 640px; margin: 0 auto; padding: 0 20px 92px; }
     let s = ln([-200, G], [400, G], 'f-ground', 2);
     s += drawProps(ex.props);
     if (o.track) s += drawTrack(ex);
-    if (ex.cable) s += ln(j.w1, ex.cable, 'f-cable', 1.4);
+    if (ex.cable) s += ln(ex.cableFrom === 'a1' ? j.a1 : j.w1, ex.cable, 'f-cable', 1.4);
+    if (ex.backPad) { const bn = dir(j.t - 90), ax = dir(j.t); s += ln(add(add(j.hip, bn, 7), ax, -6), add(add(j.neck, bn, 7), ax, 8), 'f-pad', 7); }
     if (ex.crank) s += ln(ex.crank, p.cr2, 'f-steel', 3);
     if (ex.pedals) s += pedal(j.a2, 'f-frame');
     if (ex.lever) s += ln(j.w2, ex.lever, 'f-frame', 3);
@@ -1277,12 +2127,18 @@ main { max-width: 640px; margin: 0 auto; padding: 0 20px 92px; }
     if (ex.pedals) s += pedal(j.a1, 'f-steel');
     if (ex.lever) s += ln(j.w1, ex.lever, 'f-steel', 3);
     if (ex.ropes) s += ropeWave(j.w1, ex.ropes, p.th, 'f-rope');
-    if (ex.anklePad) s += ci(add(j.a1, dir(p.l1 ? p.l1[1] - 90 : 0), 4), 5, 'f-eq');
+    if (ex.anklePad) s += ci(add(j.a1, dir(p.l1 ? p.l1[1] + 90 * (ex.padSide || -1) : 0), 4), 5, 'f-eq');
+    if (ex.kneePad) s += ln([j.k1[0] + 3, j.k1[1] + 6.5], [j.a1[0] - 2, j.a1[1] + 6.5], 'f-pad', 6) + ln([j.k1[0] - 8, j.k1[1] + 9], [j.k1[0] - 8, G], 'f-frame', 3.5);
+    if (ex.kneeTop) s += ci(add(j.k1, [-6, -7]), 5.5, 'f-eq');
+    if (ex.lever) { /* drawn with the far/near arms */ }
     if (ex.footPlate != null) {
       const n = ex.footPlate, c = add(add(j.a1, dir(n), 6), dir(n - 90), 4);
       s += ln(add(c, dir(n - 90), 17), add(c, dir(n - 90), -17), 'f-pad', 5);
     }
-    if (ex.eq) s += drawEq(ex.eq, j.w1, false);
+    if (ex.eq === 'tbar') { const pv = ex.tbar, v = [pv[0] - j.w1[0], pv[1] - j.w1[1]], L = Math.hypot(v[0], v[1]) || 1; s += ln(j.w1, pv, 'f-steel', 3.5) + ci(add(j.w1, [v[0] / L, v[1] / L], 12), 13, 'f-plate'); }
+    else if (ex.eq) s += drawEq(ex.eq, j.w1, false);
+    if (ex.leverH) s += ln(j.w1, [j.sh[0] + ex.leverH[0], j.w1[1]], 'f-steel', 3);
+    if (ex.armPads) s += ln(add(j.e1, [-3, 4]), add(j.w1, [2, 4]), 'f-pad', 5);
     s += pl([j.sh, j.e1, j.w1], 'f-ink', 6.5);
     s += musArm(j, ms);
     s += ci(j.head, S.head, 'f-head');
@@ -1301,7 +2157,7 @@ main { max-width: 640px; margin: 0 auto; padding: 0 20px 92px; }
     let s = ln([-200, G], [400, G], 'f-ground', 2);
     s += drawProps(ex.props);
     if (o.track) s += drawTrack(ex);
-    if (ex.cable) s += ln(lerpP(j.wR, j.wL, 0.5), ex.cable, 'f-cable', 1.4);
+    if (ex.cable) s += ln(ex.cableFrom === 'wR' ? j.wR : lerpP(j.wR, j.wL, 0.5), ex.cable, 'f-cable', 1.4);
     s += pl([j.hipR, j.kR, j.anR, add(j.anR, [6, 2])], 'f-ink', 7.5);
     s += pl([j.hipL, j.kL, j.anL, add(j.anL, [-6, 2])], 'f-ink', 7.5);
     s += pl([j.hipL, j.hipR], 'f-ink', 9);
@@ -1391,7 +2247,8 @@ main { max-width: 640px; margin: 0 auto; padding: 0 20px 92px; }
         { m: 'antebrate', d: 'M92 100 Q98 104 100 116 Q101 130 98 140 L92 141 Q88 128 88 114 Q89 104 92 100 Z', mirror: true },
         { m: 'abdomen', d: 'M53 74 Q60 72 67 74 L67 116 Q60 124 53 116 Z' },
         { m: 'oblici', d: 'M70 74.5 Q78 72.5 82 78 Q82 96 79 108 Q75 115 70 117.5 Z', mirror: true },
-        { m: 'cvadriceps', d: 'M64 141 Q72 131 82 133 Q86 150 83 172 Q81 186 76 191.5 Q70 192 66 184 Q62 162 64 141 Z', mirror: true },
+        { m: 'cvadriceps', d: 'M67 141 Q74 131 82 133 Q86 150 83 172 Q81 186 76 191.5 Q71 192 68.5 184 Q65.5 162 67 141 Z', mirror: true },
+        { m: 'adductori', d: 'M61 147.5 Q63.5 142 65.6 141.5 Q63.6 158 66.6 180 Q62 171.5 61 158 Z', mirror: true },
         { m: 'gambe', d: 'M67 206 Q75 203 80 209 Q81 226 77 244 L71 244 Q66 226 67 206 Z', mirror: true }
       ],
       deco: 'M53 86.5 H67 M53 99 H67 M60 74 V120'
@@ -1414,7 +2271,8 @@ main { max-width: 640px; margin: 0 auto; padding: 0 20px 92px; }
         { m: 'lombari', d: 'M54.5 98 Q60 95 65.5 98 L66.5 117 Q60 120.5 53.5 117 Z' },
         { m: 'oblici', d: 'M70.5 110.5 Q76.5 106 81.5 97.5 Q84.5 107 82 116.5 Q76 116.5 70 118.5 Z', mirror: true },
         { m: 'fesieri', d: 'M61 122 Q73 116.5 82 123 Q86 136 81 146 Q71 151 61 146.5 Z', mirror: true },
-        { m: 'femurali', d: 'M63 151.5 Q74 148.5 82 151.5 Q85 170 80 190 L69 191.5 Q62 172 63 151.5 Z', mirror: true },
+        { m: 'femurali', d: 'M66.5 151.5 Q75 148.5 82 151.5 Q85 170 80 190 L70.5 191.5 Q64.5 172 66.5 151.5 Z', mirror: true },
+        { m: 'adductori', d: 'M61 151 Q63 148.8 65.2 149.5 Q62.8 166 66.4 186 Q62 176.5 61 163 Z', mirror: true },
         { m: 'gambe', d: 'M66 203 Q77 199 81 207 Q84 222 78.5 236.5 L71 236.5 Q64 222 66 203 Z', mirror: true }
       ]
     }
@@ -1440,6 +2298,7 @@ main { max-width: 640px; margin: 0 auto; padding: 0 20px 92px; }
         let c = 'bm-m';
         if (sel.has(o.m)) c += ' is-sel';
         if (prim.includes(o.m)) c += ' is-prim'; else if (sec.includes(o.m)) c += ' is-sec';
+        if (opt.heat && opt.heat[o.m]) c += ' h' + opt.heat[o.m];
         return bmShape(o, c, opt.interactive ? ` data-m="${o.m}"` : '');
       }).join('');
       if (v.deco) s += `<path d="${v.deco}" class="bm-deco"/>`;
@@ -1449,7 +2308,7 @@ main { max-width: 640px; margin: 0 auto; padding: 0 20px 92px; }
     return view('front', 0) + view('back', 130);
   }
 
-  const API = { G, S, EX, MUSCLES, CATS, PATTERNS, PRESETS, stateAt, renderState, renderThumb, thumbPose, cycleLen, bodyMap, solveSide, solveFront, lerpPose, viewBox, trackInfo, ropePts };
+  const API = { G, S, EX, MUSCLES, CATS, PATTERNS, PRESETS, MGROUPS, KITS, stateAt, renderState, renderThumb, thumbPose, cycleLen, bodyMap, solveSide, solveFront, lerpPose, viewBox, trackInfo, ropePts };
   if (typeof module !== 'undefined' && module.exports) module.exports = API; else root.GymEngine = API;
 })(this);
 
@@ -1489,10 +2348,34 @@ window.Gym3D = (function () {
     crunch: { hand: 3, elbow: 12 }, bicycle: { hand: 6, elbow: 23 }, plank: { hand: 9, elbow: 12 },
     abwheel: { hand: 7 }, climber: { hand: 15 }, legraise: { hand: 21 },
     bike: { hand: 16 }, rower: { hand: 7 }, elliptical: { hand: 14 }, stairs: { hand: 18 }, burpee: { hand: 14 },
-    jumprope: { hand: 15 }, battleropes: { hand: 11 }, jumpsquat: { foot: 11 }
+    jumprope: { hand: 15 }, battleropes: { hand: 11 }, jumpsquat: { foot: 11 },
+    machchest: { hand: 17 }, machshoulder: { hand: p => 15 + (1 - p.uak) / 0.65 * 5, elbow: p => 14 + (1 - p.uak) / 0.65 * 15 },
+    pecdeck: { hand: p => 6 + (1 - p.ak) / 0.7 * 44, elbow: p => 12 + (1 - p.ak) / 0.7 * 30 },
+    reversefly: { hand: p => 4 + (1 - p.ak) / 0.7 * 44, elbow: p => 11 + (1 - p.ak) / 0.7 * 30 },
+    assistedpullup: { hand: 23 }, machrow: { hand: 14 }, cablecurl: { hand: 11 }, preacher: { hand: 10 }, straightpulldown: { hand: 12 },
+    hacksquat: { hand: 16, elbow: 18, foot: 11 }, smithsquat: { hand: 24, elbow: 27, foot: 11 },
+    abductor: { knee: p => 8 + 24 * p.ab, foot: p => 8 + 16 * p.ab }, adductor: { knee: p => 8 + 24 * p.ab, foot: p => 8 + 16 * p.ab },
+    seatedcalf: { foot: 9 }, backext: { hand: 4, elbow: 12 }, cablecrunch: { hand: 4, elbow: 9 }
   };
-  const RIG = { pullup: 'cross', legraise: 'cross', dips: 'parallel', cablefly: 'fly' };
-  const FLY = { x: -22, y: 150, z: 54 };
+  Object.assign(Z3, {
+    dbbench: { hand: 14, elbow: 22 }, inclinebench: { hand: 18 }, declinebench: { hand: 18 }, closegrip: { hand: 9 },
+    dbfly: { hand: p => 6 + (1 - p.ak) / 0.65 * 40, elbow: p => 12 + (1 - p.ak) / 0.65 * 24 },
+    pullover: { hand: 3, elbow: 10 }, declinepushup: { hand: 15, elbow: 20 }, diamondpushup: { hand: 4, elbow: 14 }, benchdip: { hand: 13 },
+    arnold: { hand: p => 7 + (150 - p.a1[0]) / 145 * 9, elbow: p => 10 + (150 - p.a1[0]) / 145 * 6 },
+    uprightrow: { hand: 8, elbow: p => 12 + (1 - p.uak) / 0.55 * 20 },
+    reardeltfly: { hand: p => 10 + (1 - p.ak) / 0.7 * 36, elbow: p => 13 + (1 - p.ak) / 0.7 * 22 },
+    bandpullapart: { hand: p => 4 + (1 - p.ak) / 0.7 * 44, elbow: p => 11 + (1 - p.ak) / 0.7 * 30 },
+    pikepushup: { hand: 15, elbow: 20 }, ohcable: { hand: 4, elbow: 9 }, concentration: { hand: 7, elbow: 8 }, inclinecurl: { hand: 13 },
+    chinup: { hand: 13 }, invrow: { hand: 20 }, trxrow: { hand: 10 }, tbarrow: { hand: 4, elbow: 10 },
+    frontsquat: { hand: 14, elbow: 19, foot: 12 }, sumodl: { hand: 9, foot: 22, knee: 24 }, trapbar: { hand: 17 },
+    superman: { hand: 12, foot: 7 }, airsquat: { hand: 10, elbow: 11, foot: 12 }, wallsit: { hand: 12 },
+    captainschair: { hand: 16, elbow: 16 }, hollowhold: { hand: 10 }, vup: { hand: 10 },
+    sledpush: { hand: 14 }, medslam: { hand: 9 }, wallball: { hand: 9 }
+  });
+  const CAM = { abductor: 72, adductor: 72, pecdeck: 55, reversefly: 55, smithsquat: 38, dbfly: 55, bandpullapart: 55, reardeltfly: 50, sumodl: 45, uprightrow: 50, frontsquat: 35 };
+  const RIG = { pullup: 'cross', legraise: 'cross', assistedpullup: 'cross', chinup: 'cross', invrow: 'cross', dips: 'parallel', cablefly: 'fly', lowfly: 'flyLow', smithsquat: 'smith' };
+  const FLY = { x: -22, y: 150, z: 54 }, FLY_LOW = { x: -22, y: 22, z: 54 };
+  const flyAt = () => RIG[ex.id] === 'flyLow' ? FLY_LOW : FLY;
 
   const v3 = (x, y, z) => new T.Vector3(x, y, z);
   const front = () => ex.view === 'front';
@@ -1500,7 +2383,7 @@ window.Gym3D = (function () {
   function liftDir(v) { return front() ? v3(0, -v[1], -v[0]) : v3(v[0], -v[1], 0); }
   const d3 = a => v3(Math.sin(a * RAD), Math.cos(a * RAD), 0);
   function zcfg(p) {
-    const c = Z3[ex.id] || {};
+    const c = Z3[ex.id] || Z3[ex.like] || {};
     const val = (v, d) => v == null ? d : (typeof v === 'function' ? v(p) : v);
     const hand = val(c.hand, HANDZ[ex.eq] != null ? HANDZ[ex.eq] : 13);
     const foot = val(c.foot, 8.5);
@@ -1661,12 +2544,25 @@ window.Gym3D = (function () {
         const c = o.mat[0] + o.mat[1] / 2 - 100;
         if (fr) { m.position.set(0, 1, -c); m.scale.set(42, 2, o.mat[1]); } else { m.position.set(c, 1, 0); m.scale.set(o.mat[1], 2, 42); }
       }
-      if (o.post && rig === 'fly') {
+      if (o.post && rig === 'smith') {
+        [1, -1].forEach(s => cylBetween(mesh(GEO.cyl, M.frame), v3(o.post[0] - 100, G - o.post[1], s * 44), v3(o.post[0] - 100, 0, s * 44), 2.4));
+        cylBetween(mesh(GEO.cyl, M.frame), v3(o.post[0] - 100, G - o.post[1], -44), v3(o.post[0] - 100, G - o.post[1], 44), 2.4);
+        return;
+      }
+      if (o.post && (rig === 'fly' || rig === 'flyLow')) {
         [1, -1].forEach(s => cylBetween(mesh(GEO.cyl, M.frame), v3(FLY.x - 4, FLY.y + 12, s * FLY.z), v3(FLY.x - 4, 0, s * FLY.z), 2.6));
         return;
       }
-      if (o.pulley && rig === 'fly') {
-        [1, -1].forEach(s => { const m = mesh(GEO.cyl, M.steel); m.position.set(FLY.x, FLY.y, s * FLY.z); m.rotation.x = Math.PI / 2; m.scale.set(4.2, 3, 4.2); });
+      if (o.pulley && (rig === 'fly' || rig === 'flyLow')) {
+        const F_ = flyAt();
+        [1, -1].forEach(s => { const m = mesh(GEO.cyl, M.steel); m.position.set(F_.x, F_.y, s * F_.z); m.rotation.x = Math.PI / 2; m.scale.set(4.2, 3, 4.2); });
+        return;
+      }
+      if (o.rack) {
+        [1, -1].forEach(s => {
+          cylBetween(mesh(GEO.cyl, M.frame), lift([o.rack[0], o.rack[1]], s * 30), lift([o.rack[0], G], s * 30), 2.4);
+          const hook = mesh(GEO.box, M.steel); hook.position.copy(lift([o.rack[0] + 4, o.rack[1] + 8], s * 30)); hook.scale.set(8, 2.4, 3);
+        });
         return;
       }
       if (o.post) {
@@ -1719,6 +2615,7 @@ window.Gym3D = (function () {
       if (ms.includes('gambe')) add({ k: 'limb', seg: 'sh', sd, side: 1, f0: 0.1, f1: 0.55 });
       if (ms.includes('biceps')) add({ k: 'limb', seg: 'ua', sd, side: -1, f0: 0.15, f1: 0.85 });
       if (ms.includes('triceps')) add({ k: 'limb', seg: 'ua', sd, side: 1, f0: 0.15, f1: 0.85 });
+      if (ms.includes('adductori')) add({ k: 'inner', sd });
     });
   }
 
@@ -1787,6 +2684,15 @@ window.Gym3D = (function () {
       } else if (o.k === 'glute') {
         o.m.position.copy(J.hip).addScaledVector(fwd, -5.4).addScaledVector(axis, -1.5).addScaledVector(lat, o.s * 5);
         o.m.quaternion.copy(F.torso.quaternion); o.m.scale.set(3.4, 6.2, 5);
+      } else if (o.k === 'inner') {
+        const A = J['h' + o.sd], B = J['k' + o.sd];
+        const d = v3(0, 0, 0).subVectors(B, A).normalize();
+        let n = v3(0, 0, 0).crossVectors(d, v3(0, 1, 0));
+        if (n.lengthSq() < 1e-4) n = v3(0, 0, 1);
+        n.normalize();
+        const towardMid = front() ? v3(0, 0, 0).subVectors(J.hip, A) : v3(0, 0, -A.z);
+        if (n.dot(towardMid) < 0) n.negate();
+        cylBetween(o.m, A.clone().lerp(B, 0.15).addScaledVector(n, 4.3), A.clone().lerp(B, 0.8).addScaledVector(n, 4.3), 1.8);
       } else {
         const sd = o.sd, seg = o.seg;
         const A = J[(seg === 'th' ? 'h' : seg === 'sh' ? 'k' : seg === 'ua' ? 's' : 'e') + sd];
@@ -1842,8 +2748,26 @@ window.Gym3D = (function () {
       const a = mesh(GEO.cyl, M.steel, EQ.wheel); a.rotation.x = Math.PI / 2; a.scale.set(1.1, 18, 1.1);
     }
     if (ex.eq === 'handle') { EQ.handle = mesh(GEO.cyl, M.steel); }
-    if (ex.cable) { EQ.cable = lineObj(M.cable, 2); if (RIG[ex.id] === 'fly') EQ.cable2 = lineObj(M.cable, 2); }
+    if (ex.eq === 'ball') { EQ.ball = mesh(GEO.sph, M.plate); }
+    if (ex.eq === 'band') { EQ.band = mesh(GEO.cyl, M.plate, world, true); }
+    if (ex.eq === 'tbar') { EQ.tbar = mesh(GEO.cyl, M.steel); EQ.tplate = mesh(GEO.cyl, M.plate); EQ.thandle = mesh(GEO.cyl, M.steel); }
+    if (ex.eq === 'hex') {
+      EQ.hex = new T.Group(); world.add(EQ.hex);
+      [1, -1].forEach(s => {
+        const h = mesh(GEO.cyl, M.steel, EQ.hex); h.rotation.z = Math.PI / 2; h.scale.set(1.2, 14, 1.2); h.position.z = s * 17;
+        [1, -1].forEach(e => { const f = mesh(GEO.cyl, M.steel, EQ.hex); cylBetween(f, v3(e * 7, 0, s * 17), v3(e * 3, 0, s * 25), 1.1); });
+        const sl = mesh(GEO.cyl, M.steel, EQ.hex); sl.rotation.x = Math.PI / 2; sl.scale.set(1.3, 12, 1.3); sl.position.z = s * 30;
+        const p = mesh(GEO.cyl, M.plate, EQ.hex); p.rotation.x = Math.PI / 2; p.scale.set(13, 3.4, 13); p.position.z = s * 30;
+      });
+    }
+    if (ex.leverH) { EQ.lhN = mesh(GEO.cyl, M.steel); EQ.lhF = mesh(GEO.cyl, M.steel); EQ.axN = mesh(GEO.cyl, M.frame); EQ.axF = mesh(GEO.cyl, M.frame); }
+    if (ex.armPads) { EQ.apN = mesh(GEO.box, M.prop); EQ.apF = mesh(GEO.box, M.prop); }
+    if (ex.cable) { EQ.cable = lineObj(M.cable, 2); if (RIG[ex.id] === 'fly' || RIG[ex.id] === 'flyLow') EQ.cable2 = lineObj(M.cable, 2); }
     if (ex.anklePad) EQ.pad = mesh(GEO.cyl, M.prop);
+    if (ex.backPad) EQ.back = mesh(GEO.box, M.prop);
+    if (ex.kneePad) { EQ.knee = mesh(GEO.box, M.prop); EQ.kneePost = mesh(GEO.cyl, M.frame); }
+    if (ex.kneeTop) EQ.kneeTop = mesh(GEO.cyl, M.prop);
+    if (ex.kneePads) { EQ.kpN = mesh(GEO.box, M.prop); EQ.kpF = mesh(GEO.box, M.prop); }
     if (ex.footPlate != null) EQ.plate = mesh(GEO.box, M.frame);
     if (ex.seat) EQ.seat = mesh(GEO.box, M.prop);
     if (ex.crank) { EQ.crN = mesh(GEO.box, M.steel); EQ.crF = mesh(GEO.box, M.steel); EQ.ring = mesh(GEO.cyl, M.steel); EQ.pN = mesh(GEO.box, M.dark); EQ.pF = mesh(GEO.box, M.dark); }
@@ -1872,14 +2796,36 @@ window.Gym3D = (function () {
     if (EQ.dbN) EQ.dbN.position.copy(J.wN);
     if (EQ.dbF) EQ.dbF.position.copy(J.wF);
     if (EQ.kb) EQ.kb.position.copy(mid);
+    if (EQ.ball) { EQ.ball.position.copy(mid).add(front() ? v3(0, -4, 0) : v3(0, 0, 0)); EQ.ball.scale.setScalar(9); }
+    if (EQ.band) cylBetween(EQ.band, J.wN, J.wF, 0.9);
+    if (EQ.hex) EQ.hex.position.copy(mid);
+    if (EQ.tbar) {
+      const pv = lift(ex.tbar, 0), d = v3(0, 0, 0).subVectors(pv, mid).normalize();
+      cylBetween(EQ.tbar, mid, pv, 1.3);
+      const pc = mid.clone().addScaledVector(d, 13);
+      cylBetween(EQ.tplate, pc.clone().addScaledVector(d, -1.7), pc.clone().addScaledVector(d, 1.7), 13);
+      EQ.thandle.position.copy(mid); EQ.thandle.rotation.set(Math.PI / 2, 0, 0); EQ.thandle.scale.set(1.2, 14, 1.2);
+    }
+    if (EQ.lhN) {
+      [[EQ.lhN, EQ.axN, J.wN, 1], [EQ.lhF, EQ.axF, J.wF, -1]].forEach(([lv, ax, W, s]) => {
+        const pv = v3(J.sN.x + ex.leverH[0], W.y, s * ex.leverH[1]);
+        cylBetween(lv, W, pv, 1.6);
+        cylBetween(ax, v3(pv.x, pv.y - 6, pv.z), v3(pv.x, G - 30, pv.z), 2);
+      });
+    }
+    if (EQ.apN) {
+      [[EQ.apN, J.eN, J.wN], [EQ.apF, J.eF, J.wF]].forEach(([m, El, W]) => {
+        const c = El.clone().lerp(W, 0.45); m.position.set(c.x, c.y - 4, c.z); m.rotation.set(0, 0, 0); m.scale.set(El.distanceTo(W) + 6, 3, 8);
+      });
+    }
     if (EQ.wheel) EQ.wheel.position.copy(mid).add(v3(0, -3, 0));
     if (EQ.handle && EQ.cable2) { EQ.handle.visible = false; }
     else if (EQ.handle) { EQ.handle.position.copy(mid); if (front()) { EQ.handle.rotation.set(0, 0, 0); EQ.handle.scale.set(1.3, 10, 1.3); } else { EQ.handle.rotation.set(Math.PI / 2, 0, 0); EQ.handle.scale.set(1.3, 16, 1.3); } }
-    if (EQ.cable2) { setLine(EQ.cable, [J.wN, v3(FLY.x, FLY.y, FLY.z)]); setLine(EQ.cable2, [J.wF, v3(FLY.x, FLY.y, -FLY.z)]); }
-    else if (EQ.cable) setLine(EQ.cable, [mid, lift(ex.cable, 0)]);
+    if (EQ.cable2) { const F_ = flyAt(); setLine(EQ.cable, [J.wN, v3(F_.x, F_.y, F_.z)]); setLine(EQ.cable2, [J.wF, v3(F_.x, F_.y, -F_.z)]); }
+    else if (EQ.cable) setLine(EQ.cable, [ex.cableFrom === 'a1' ? J.aN : ex.cableFrom === 'wR' ? J.wN : mid, lift(ex.cable, ex.cableFrom === 'a1' ? J.z.foot : 0)]);
     const j = J.j;
     if (EQ.pad) {
-      const a = front() ? J.aN : lift(j.a1, 0), ang = p.l1 ? p.l1[1] - 90 : 0;
+      const a = front() ? J.aN : lift(j.a1, 0), ang = p.l1 ? p.l1[1] + 90 * (ex.padSide || -1) : 0;
       EQ.pad.position.copy(a).addScaledVector(liftDir([Math.sin(ang * RAD), -Math.cos(ang * RAD)]), 4);
       EQ.pad.rotation.set(Math.PI / 2, 0, 0); EQ.pad.scale.set(4.6, 26, 4.6);
     }
@@ -1887,6 +2833,19 @@ window.Gym3D = (function () {
       const n = ex.footPlate, dn = [Math.sin(n * RAD), -Math.cos(n * RAD)], dp = [Math.sin((n - 90) * RAD), -Math.cos((n - 90) * RAD)];
       const c = [j.a1[0] + dn[0] * 6 + dp[0] * 4, j.a1[1] + dn[1] * 6 + dp[1] * 4];
       boxBetween(EQ.plate, lift([c[0] + dp[0] * 17, c[1] + dp[1] * 17], 0), lift([c[0] - dp[0] * 17, c[1] - dp[1] * 17], 0), 4, 30);
+    }
+    if (EQ.back) {
+      const axis = v3(0, 0, 0).subVectors(J.neck, J.hip).normalize(), bn = J.fwd.clone().multiplyScalar(-1);
+      boxBetween(EQ.back, J.hip.clone().addScaledVector(bn, 8).addScaledVector(axis, -8), J.neck.clone().addScaledVector(bn, 8).addScaledVector(axis, 10), 6, 30);
+    }
+    if (EQ.knee) {
+      boxBetween(EQ.knee, lift([j.k1[0] + 3, j.k1[1] + 7], 0), lift([j.a1[0] - 2, j.a1[1] + 7], 0), 5, 30);
+      cylBetween(EQ.kneePost, lift([j.k1[0] - 8, j.k1[1] + 9], 0), lift([j.k1[0] - 8, G], 0), 2.2);
+    }
+    if (EQ.kneeTop) { EQ.kneeTop.position.copy(lift([j.k1[0] - 6, j.k1[1] - 7], 0)); EQ.kneeTop.rotation.set(Math.PI / 2, 0, 0); EQ.kneeTop.scale.set(5.5, 34, 5.5); }
+    if (EQ.kpN) {
+      const out = ex.kneePads === 'out' ? 1 : -1;
+      [[EQ.kpN, J.kN, 1], [EQ.kpF, J.kF, -1]].forEach(([m, K, s]) => { m.position.copy(K).add(v3(-4, 0, s * out * 6.5)); m.rotation.set(0, 0, 0); m.scale.set(12, 14, 2.6); });
     }
     if (EQ.seat) { EQ.seat.position.copy(lift([j.hip[0], j.hip[1] + 7], 0)); EQ.seat.scale.set(20, 4, 20); }
     if (EQ.crN) {
@@ -1945,7 +2904,8 @@ window.Gym3D = (function () {
     const target = front() ? v3(0, G - cy, -(cx - 100)) : v3(cx - 100, G - cy, 0);
     const fov = camera.fov * RAD, asp = 10 / 9;
     const dh = (vb[3] / 2) / Math.tan(fov / 2), dw = (vb[2] / 2) / (Math.tan(fov / 2) * asp);
-    view = { target, dist: Math.max(dh, dw) * (thumbMode ? 1.1 : 1.18), base: front() ? 62 : 30, yaw: 0, pitch: 9 };
+    const cam = CAM[ex.id] != null ? CAM[ex.id] : CAM[ex.like];
+    view = { target, dist: Math.max(dh, dw) * (thumbMode ? 1.1 : 1.18), base: cam != null ? cam : front() ? 62 : 30, yaw: 0, pitch: 9 };
     sun.position.set(target.x + 90, target.y + 220, target.z + 140);
     sun.target.position.copy(target);
   }
@@ -2007,8 +2967,8 @@ document.getElementById('count').textContent = GymEngine.EX.length + ' de exerci
   };
   const state = {
     sel: new Set((store.get('sel', []) || []).filter(m => MUSCLES[m])),
-    tab: store.get('tab', 'muscles') === 'catalog' ? 'catalog' : 'muscles',
-    cat: CATS[store.get('cat', 'all')] ? store.get('cat', 'all') : 'all',
+    tab: ['catalog', 'journal'].includes(store.get('tab', 'muscles')) ? store.get('tab', 'muscles') : 'muscles',
+    cat: (E.MGROUPS.some(g => g.id === store.get('cat', 'all'))) ? store.get('cat', 'all') : 'all',
     q: ''
   };
 
@@ -2136,27 +3096,42 @@ document.getElementById('count').textContent = GymEngine.EX.length + ' de exerci
   }
 
   /* ---------- catalog tab ---------- */
+  const GROUP_BY_ID = Object.fromEntries(E.MGROUPS.map(g => [g.id, g]));
+  const KIT_ORDER = ['free', 'machine', 'body', 'acc'];
+  function groupOf(ex) {
+    if (ex.cat === 'cardio') return 'cardio';
+    const g = E.MGROUPS.find(gr => gr.m && gr.m.includes(ex.prim[0]));
+    return g ? g.id : 'abdomen';
+  }
   function renderFilters() {
-    const opts = [['all', 'Toate']].concat(CAT_ORDER.map(c => [c, CATS[c].name]));
+    const opts = [['all', 'Toate']].concat(E.MGROUPS.map(g => [g.id, g.name]));
     $('#filters').innerHTML = opts.map(([k, n]) =>
-      `<button type="button" class="chip filter" data-cat="${k}" aria-pressed="${state.cat === k}"${k !== 'all' ? ` style="--cat:${catVar(k)}"` : ''}>` +
-      `${k !== 'all' ? '<i class="dot"></i>' : ''}${n}</button>`
-    ).join('');
+      `<button type="button" class="chip filter" data-cat="${k}" aria-pressed="${state.cat === k}">${n}</button>`).join('');
+    const act = $('#filters [aria-pressed="true"]');
+    if (act) { const box = $('#filters'); box.scrollLeft = Math.max(0, act.offsetLeft - box.clientWidth / 2 + act.offsetWidth / 2); }
   }
   function renderCatalog() {
     const q = norm(state.q.trim());
-    const cats = state.cat === 'all' ? CAT_ORDER : [state.cat];
+    const match = e => !q || norm(e.name + ' ' + e.en + ' ' + e.equip).includes(q);
+    const rowsOf = list => `<ul class="rows">${list.map(e => row(e,
+      `<span class="row-mus">${e.prim.map(m => MUSCLES[m]).join(', ')}</span><span class="row-kit">${E.KITS[e.kit]}</span>`)).join('')}</ul>`;
     let html = '';
-    cats.forEach(c => {
-      let sec = '';
-      CATS[c].patterns.forEach(pat => {
-        const items = EX.filter(e => e.pat === pat && (!q || norm(e.name + ' ' + e.en).includes(q)));
-        if (!items.length) return;
-        sec += `<h3 class="pat"><span>${PATTERNS[pat]}</span><span class="n">${items.length}</span></h3><ul class="rows">` +
-          items.map(e => row(e, `<span class="row-mus">${e.prim.map(m => MUSCLES[m]).join(', ')}</span>`)).join('') + `</ul>`;
+    if (state.cat === 'all') {
+      E.MGROUPS.forEach(g => {
+        const items = EX.filter(e => groupOf(e) === g.id && match(e));
+        if (items.length) html += `<section class="cat"><h2 class="cat-h">${g.name}<span class="n">${items.length}</span></h2>${rowsOf(items)}</section>`;
       });
-      if (sec) html += `<section class="cat" style="--cat:${catVar(c)}"><h2 class="cat-h"><i class="plate" aria-hidden="true"></i>${CATS[c].name}</h2>${sec}</section>`;
-    });
+    } else {
+      const g = GROUP_BY_ID[state.cat];
+      const prim = EX.filter(e => match(e) && (g.cardio ? e.cat === 'cardio' : e.prim.some(m => g.m.includes(m))));
+      const sec = g.cardio ? [] : EX.filter(e => match(e) && !prim.includes(e) && e.sec.some(m => g.m.includes(m)));
+      KIT_ORDER.forEach(k => {
+        const items = prim.filter(e => e.kit === k);
+        if (items.length) html += `<h3 class="pat"><span>${E.KITS[k]}</span><span class="n">${items.length}</span></h3>${rowsOf(items)}`;
+      });
+      if (sec.length) html += `<h3 class="pat pat-sec"><span>Îl lucrează secundar</span><span class="n">${sec.length}</span></h3>${rowsOf(sec)}`;
+      if (html) html = `<section class="cat"><h2 class="cat-h">${g.name}<span class="n">${prim.length}</span></h2>${html}</section>`;
+    }
     $('#catalog').innerHTML = html ||
       `<p class="empty">Niciun exercițiu nu se potrivește cu „${esc(state.q.trim())}”. Încearcă alt nume, în română sau în engleză.</p>`;
     scheduleThumbs();
@@ -2168,15 +3143,18 @@ document.getElementById('count').textContent = GymEngine.EX.length + ' de exerci
     store.set('tab', tab);
     $('#view-muscles').hidden = tab !== 'muscles';
     $('#view-catalog').hidden = tab !== 'catalog';
+    $('#view-journal').hidden = tab !== 'journal';
+    if (tab === 'journal') renderJournal();
     document.querySelectorAll('.tab').forEach(b => b.setAttribute('aria-selected', b.dataset.tab === tab ? 'true' : 'false'));
     window.scrollTo(0, 0);
   }
 
   /* ---------- detail sheet ---------- */
-  let anim = null, lastFocus = null;
+  let anim = null, lastFocus = null, closeTimer = 0;
   function openDetail(id) {
     const ex = byId[id];
     if (!ex) return;
+    clearTimeout(closeTimer);
     const d = $('#detail');
     d.style.setProperty('--cat', catVar(ex.cat));
     const list = arr => arr.length ? arr.map(m => MUSCLES[m]).join(', ') : '—';
@@ -2190,8 +3168,10 @@ document.getElementById('count').textContent = GymEngine.EX.length + ' de exerci
       `<p class="d-pat"><i class="dot"></i>${PATTERNS[ex.pat]}</p>` +
       `<h2 class="d-title" id="dTitle">${esc(ex.name)}</h2><p class="d-en">${esc(ex.en)}</p>` +
       `<p class="d-eq"><span>Echipament</span> ${esc(ex.equip)}</p>` +
+      `<div class="d-log" id="dLog"></div>` +
       `<section class="d-sec"><h3>Mușchi lucrați</h3><div class="d-mus"><svg viewBox="0 0 250 262" aria-hidden="true">${E.bodyMap({ prim: ex.prim, sec: ex.sec })}</svg>` +
       `<ul class="legend"><li><b><i class="sw"></i>Principali</b>${list(ex.prim)}</li><li><b><i class="sw s"></i>Secundari</b>${list(ex.sec)}</li></ul></div></section>` +
+      `<section class="d-sec" id="dHist" hidden></section>` +
       `<section class="d-sec"><h3>Cum se execută</h3><ol class="steps">${ex.steps.map(s => `<li>${esc(s)}</li>`).join('')}</ol></section>` +
       (ex.dose ? `<section class="d-sec"><h3>Durată și intensitate</h3><dl class="dose">${ex.dose.map(d => `<div><dt>${esc(d[0])}</dt><dd>${esc(d[1])}</dd></div>`).join('')}</dl></section>` : '') +
       `<section class="d-sec"><h3>Atenție la</h3><ul class="tips">${ex.tips.map(s => `<li>${esc(s)}</li>`).join('')}</ul></section>`;
@@ -2200,6 +3180,7 @@ document.getElementById('count').textContent = GymEngine.EX.length + ' de exerci
     d.querySelector('.d-scroll').scrollTop = 0;
     document.body.classList.add('locked');
     requestAnimationFrame(() => requestAnimationFrame(() => d.classList.add('open')));
+    renderDetailLog(ex);
     startAnim(ex);
     $('#dBack').focus({ preventScroll: true });
   }
@@ -2209,8 +3190,9 @@ document.getElementById('count').textContent = GymEngine.EX.length + ' de exerci
     stopAnim();
     d.classList.remove('open');
     document.body.classList.remove('locked');
-    const done = () => { d.hidden = true; };
-    if (reduced) done(); else setTimeout(done, 280);
+    const done = () => { if (!d.classList.contains('open')) d.hidden = true; };
+    clearTimeout(closeTimer);
+    if (reduced) done(); else closeTimer = setTimeout(done, 280);
     if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
   }
   const ICON_PAUSE = '<svg viewBox="0 0 20 20" aria-hidden="true"><rect x="5" y="4" width="3.4" height="12" rx="1"/><rect x="11.6" y="4" width="3.4" height="12" rx="1"/></svg>';
@@ -2261,6 +3243,264 @@ document.getElementById('count').textContent = GymEngine.EX.length + ' de exerci
   }
   function stopAnim() { if (anim) { cancelAnimationFrame(anim.raf); if (anim.use3d && G3) G3.close(); anim = null; } }
 
+
+  /* ---------- journal: kept on this phone only (localStorage) ---------- */
+  const HOLDS = new Set(['plank', 'sideplank']);
+  const kindOf = ex => ex.cat === 'cardio' ? 'cardio' : HOLDS.has(ex.id) ? 'hold' : 'sets';
+  const LOG_KEY = 'gymatlas.log';
+  function loadLog() { try { const v = JSON.parse(localStorage.getItem(LOG_KEY) || '[]'); return Array.isArray(v) ? v.filter(e => e && byId[e.ex] && e.date) : []; } catch (e) { return []; } }
+  function saveLog() { try { localStorage.setItem(LOG_KEY, JSON.stringify(journal)); return true; } catch (e) { return false; } }
+  let journal = loadLog();
+  const pad2 = n => String(n).padStart(2, '0');
+  const isoOf = d => `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`;
+  const todayISO = () => isoOf(new Date());
+  const dayNum = iso => { const [y, m, d] = iso.split('-').map(Number); return Date.UTC(y, m - 1, d) / 86400000; };
+  const MONTHS = ['ianuarie', 'februarie', 'martie', 'aprilie', 'mai', 'iunie', 'iulie', 'august', 'septembrie', 'octombrie', 'noiembrie', 'decembrie'];
+  const MON_S = ['ian.', 'feb.', 'mar.', 'apr.', 'mai', 'iun.', 'iul.', 'aug.', 'sept.', 'oct.', 'nov.', 'dec.'];
+  const WEEKDAYS = ['duminică', 'luni', 'marți', 'miercuri', 'joi', 'vineri', 'sâmbătă'];
+  function dayLabel(iso) {
+    const [y, m, d] = iso.split('-').map(Number), diff = dayNum(todayISO()) - dayNum(iso);
+    const base = `${d} ${MONTHS[m - 1]}${y !== new Date().getFullYear() ? ' ' + y : ''}`;
+    if (diff === 0) return `Azi, ${base}`;
+    if (diff === 1) return `Ieri, ${base}`;
+    const wd = WEEKDAYS[new Date(y, m - 1, d).getDay()];
+    return `${wd.charAt(0).toUpperCase() + wd.slice(1)}, ${base}`;
+  }
+  const shortDate = iso => { const [, m, d] = iso.split('-').map(Number); return `${d} ${MON_S[m - 1]}`; };
+  const num = v => { const n = parseFloat(String(v).replace(',', '.')); return isFinite(n) ? n : 0; };
+  const fmt = n => (Math.round(n * 100) / 100).toString().replace('.', ',');
+  function summary(e) {
+    const ex = byId[e.ex], k = kindOf(ex);
+    if (k === 'cardio') return `${fmt(e.min || 0)} min${e.km ? `, ${fmt(e.km)} km` : ''}`;
+    const sets = e.sets || [];
+    const one = st => k === 'hold' ? `${fmt(st.r)} s${st.kg ? ` cu ${fmt(st.kg)} kg` : ''}` : (st.kg ? `${fmt(st.r)} × ${fmt(st.kg)} kg` : `${fmt(st.r)} rep.`);
+    return `${sets.length} ${sets.length === 1 ? 'serie' : 'serii'}: ${sets.map(one).join(', ')}`;
+  }
+  const entriesFor = id => journal.filter(e => e.ex === id).sort((a, b) => dayNum(b.date) - dayNum(a.date) || (b.t || 0) - (a.t || 0));
+  function topValue(e) {
+    const k = kindOf(byId[e.ex]);
+    if (k === 'cardio') return e.min || 0;
+    const sets = e.sets || [];
+    if (k === 'hold') return Math.max(0, ...sets.map(s => s.r || 0));
+    const kg = Math.max(0, ...sets.map(s => s.kg || 0));
+    return kg || Math.max(0, ...sets.map(s => s.r || 0));
+  }
+
+  function weekStart() { const d = new Date(); const wd = (d.getDay() + 6) % 7; d.setDate(d.getDate() - wd); return isoOf(d); }
+  function weekData() {
+    const from = dayNum(weekStart()), list = journal.filter(e => dayNum(e.date) >= from);
+    const load = {};
+    let sets = 0, cardio = 0;
+    list.forEach(e => {
+      const ex = byId[e.ex], k = kindOf(ex);
+      const units = k === 'cardio' ? (e.min || 0) / 15 : (e.sets || []).length;
+      if (k === 'cardio') cardio += e.min || 0; else sets += (e.sets || []).length;
+      ex.prim.forEach(m => { load[m] = (load[m] || 0) + units; });
+      ex.sec.forEach(m => { load[m] = (load[m] || 0) + units / 2; });
+    });
+    const heat = {};
+    Object.keys(load).forEach(m => { heat[m] = load[m] >= 9 ? 3 : load[m] >= 4 ? 2 : 1; });
+    return { days: new Set(list.map(e => e.date)).size, sets, cardio: Math.round(cardio), heat };
+  }
+
+  function renderJournal() {
+    const box = $('#journal');
+    if (!box) return;
+    if (!journal.length) {
+      box.innerHTML = `<div class="j-empty"><h2>Jurnalul e gol</h2><p>Deschide un exercițiu și apasă <b>Notează în jurnal</b>. Seriile tale apar aici, grupate pe zile, iar pe corp vezi ce mușchi ai lucrat săptămâna asta.</p>` +
+        `<button type="button" class="btn-ghost" id="jDemo">Arată-mi cu date de exemplu</button>` +
+        `<button type="button" class="link" id="jImport">Importă o copie salvată</button></div>`;
+      return;
+    }
+    const w = weekData();
+    const parts = [];
+    if (w.days) parts.push(`${w.days} ${w.days === 1 ? 'zi de antrenament' : 'zile de antrenament'}`);
+    if (w.sets) parts.push(`${w.sets} ${w.sets === 1 ? 'serie' : w.sets >= 20 ? 'de serii' : 'serii'}`);
+    if (w.cardio) parts.push(`${w.cardio} min de cardio`);
+    const sentence = parts.length ? parts.join(', ').replace(/, ([^,]*)$/, ' și $1') : 'Nimic încă';
+    let html = `<section class="j-week"><h2>Săptămâna aceasta</h2><p class="j-week-txt">${sentence}.</p>` +
+      `<svg class="j-map" viewBox="0 0 250 282" aria-label="Mușchii lucrați săptămâna aceasta">${E.bodyMap({ heat: w.heat, labels: true })}</svg>` +
+      `<p class="j-legend"><span><i class="hw h1"></i>puțin</span><span><i class="hw h2"></i>mediu</span><span><i class="hw h3"></i>mult</span></p></section>`;
+    const byDay = {};
+    journal.forEach(e => { (byDay[e.date] = byDay[e.date] || []).push(e); });
+    Object.keys(byDay).sort((a, b) => dayNum(b) - dayNum(a)).forEach(day => {
+      html += `<h3 class="j-day">${dayLabel(day)}</h3><ul class="rows">` +
+        byDay[day].sort((a, b) => (a.t || 0) - (b.t || 0)).map(e => {
+          const ex = byId[e.ex];
+          return `<li><button class="row" type="button" data-entry="${e.id}">${thumb(ex)}<span class="row-txt"><span class="row-name">${esc(ex.name)}</span>` +
+            `<span class="row-mus">${esc(summary(e))}</span>${e.note ? `<span class="row-sub">${esc(e.note)}</span>` : ''}</span></button></li>`;
+        }).join('') + `</ul>`;
+    });
+    const hasDemo = journal.some(e => e.demo);
+    html += `<div class="j-tools">${hasDemo ? `<button type="button" class="btn-ghost" id="jClearDemo">Șterge datele de exemplu</button>` : ''}` +
+      `<button type="button" class="btn-ghost" id="jExport">Salvează o copie</button><button type="button" class="btn-ghost" id="jImport">Importă o copie</button></div>` +
+      `<p class="j-note">Jurnalul se păstrează doar pe acest telefon. Salvează din când în când o copie (de exemplu în iCloud Drive), ca să nu-l pierzi dacă ștergi aplicația.</p>`;
+    box.innerHTML = html;
+    scheduleThumbs();
+  }
+
+  function renderDetailLog(ex) {
+    const box = $('#dLog'), hist = $('#dHist');
+    if (!box) return;
+    const list = entriesFor(ex.id), last = list[0];
+    box.innerHTML = `<button type="button" class="btn-primary" id="logBtn">Notează în jurnal</button>` +
+      (last ? `<p class="d-last"><span>Ultima dată, ${shortDate(last.date)}:</span> ${esc(summary(last))}</p>` : '');
+    if (!list.length) { hist.hidden = true; hist.innerHTML = ''; return; }
+    const k = kindOf(ex), pts = list.slice(0, 8).reverse();
+    const label = k === 'cardio' ? 'Durata (min)' : k === 'hold' ? 'Cel mai lung timp (s)' : (pts.some(e => (e.sets || []).some(s => s.kg)) ? 'Cea mai grea serie (kg)' : 'Cele mai multe repetări');
+    let chart = '';
+    if (pts.length >= 2) {
+      const vals = pts.map(topValue), lo = Math.min(...vals), hi = Math.max(...vals), span = hi - lo || 1;
+      const W = 300, H = 90, px = i => 14 + i * (W - 28) / (pts.length - 1), py = v => H - 18 - (v - lo) / span * (H - 40);
+      const poly = vals.map((v, i) => `${px(i).toFixed(1)},${py(v).toFixed(1)}`).join(' ');
+      chart = `<svg class="j-chart" viewBox="0 0 ${W} ${H}" aria-label="${label}">` +
+        `<polyline points="${poly}" class="jc-line"/>` +
+        vals.map((v, i) => `<circle cx="${px(i).toFixed(1)}" cy="${py(v).toFixed(1)}" r="3.6" class="jc-dot"/><text x="${px(i).toFixed(1)}" y="${(py(v) - 8).toFixed(1)}" class="jc-val">${fmt(v)}</text>` +
+          `<text x="${px(i).toFixed(1)}" y="${H - 3}" class="jc-date">${shortDate(pts[i].date)}</text>`).join('') + `</svg>`;
+    }
+    hist.hidden = false;
+    hist.innerHTML = `<h3>Istoricul tău</h3>${chart ? `<p class="j-chart-l">${label}</p>${chart}` : ''}` +
+      `<ul class="j-hist">${list.slice(0, 5).map(e => `<li><button type="button" data-entry="${e.id}"><b>${shortDate(e.date)}</b><span>${esc(summary(e))}</span></button></li>`).join('')}</ul>`;
+  }
+
+  /* ---------- log sheet ---------- */
+  let editing = null;
+  function openLog(exId, entryId) {
+    const ex = byId[exId], k = kindOf(ex);
+    const prev = entryId ? journal.find(e => e.id === entryId) : null;
+    const last = entriesFor(exId).find(e => !prev || e.id !== prev.id);
+    const base = prev ? JSON.parse(JSON.stringify(prev))
+      : { id: 'e' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6), ex: exId, date: todayISO(),
+          sets: k === 'cardio' ? [] : (last && last.sets && last.sets.length ? last.sets.map(s => ({ r: s.r, kg: s.kg })) : [{ r: k === 'hold' ? 30 : 10, kg: 0 }]),
+          min: k === 'cardio' ? (last ? last.min : 20) : undefined, km: k === 'cardio' ? (last ? last.km || 0 : 0) : undefined, note: '' };
+    editing = { k, entry: base, isNew: !prev, last };
+    $('#logTitle').textContent = ex.name;
+    $('#logDelete').hidden = !prev;
+    drawLog();
+    const sh = $('#logSheet');
+    sh.hidden = false;
+    requestAnimationFrame(() => requestAnimationFrame(() => sh.classList.add('open')));
+  }
+  const stepper = (field, idx, val, step, label) =>
+    `<div class="stepper"><button type="button" data-step="${field}" data-i="${idx}" data-d="${-step}" aria-label="Scade ${label}">−</button>` +
+    `<input inputmode="decimal" data-f="${field}" data-i="${idx}" value="${fmt(val || 0)}" aria-label="${label}"><button type="button" data-step="${field}" data-i="${idx}" data-d="${step}" aria-label="Crește ${label}">+</button></div>`;
+  function drawLog() {
+    const { k, entry, last } = editing;
+    let h = '';
+    if (last && editing.isNew) h += `<p class="log-last">Data trecută (${shortDate(last.date)}): ${esc(summary(last))}</p>`;
+    h += `<label class="log-date">Data <input type="date" id="logDate" value="${entry.date}" max="${todayISO()}"></label>`;
+    if (k === 'cardio') {
+      h += `<div class="log-grid cardio"><span>Minute</span><span>Distanță, km (opțional)</span>` +
+        stepper('min', 0, entry.min, 5, 'minute') + stepper('km', 0, entry.km, 0.5, 'kilometri') + `</div>`;
+    } else {
+      h += `<div class="log-grid"><span></span><span>${k === 'hold' ? 'Secunde' : 'Repetări'}</span><span>Kg${k === 'hold' ? ' (opțional)' : ''}</span><span></span>` +
+        entry.sets.map((st, i) => `<span class="log-n">${i + 1}</span>` + stepper('r', i, st.r, k === 'hold' ? 5 : 1, k === 'hold' ? 'secunde' : 'repetări') +
+          stepper('kg', i, st.kg, 2.5, 'kilograme') + `<button type="button" class="log-rm" data-rm="${i}" aria-label="Șterge seria ${i + 1}"${entry.sets.length === 1 ? ' disabled' : ''}>×</button>`).join('') +
+        `</div><button type="button" class="link log-add" id="logAdd">+ Adaugă o serie</button>`;
+    }
+    h += `<label class="log-note">Notițe (opțional)<textarea id="logNote" rows="2" placeholder="de exemplu: ultima serie grea, durere de umăr">${esc(entry.note || '')}</textarea></label>`;
+    $('#logBody').innerHTML = h;
+  }
+  function readLogInputs() {
+    const { entry } = editing;
+    $('#logBody').querySelectorAll('input[data-f]').forEach(inp => {
+      const f = inp.dataset.f, i = +inp.dataset.i, v = Math.max(0, num(inp.value));
+      if (f === 'min' || f === 'km') entry[f] = v; else if (entry.sets[i]) entry.sets[i][f] = v;
+    });
+    const d = $('#logDate'); if (d && d.value) entry.date = d.value;
+    const n = $('#logNote'); if (n) entry.note = n.value.trim();
+  }
+  function closeLog() {
+    const sh = $('#logSheet');
+    sh.classList.remove('open');
+    setTimeout(() => { sh.hidden = true; }, reduced ? 0 : 220);
+    editing = null;
+  }
+  function afterLogChange(exId) {
+    saveLog();
+    renderJournal();
+    const d = $('#detail');
+    if (!d.hidden && $('#dLog')) renderDetailLog(byId[exId]);
+  }
+  function saveLogEntry() {
+    readLogInputs();
+    const { entry, k } = editing;
+    if (k === 'cardio') { if (!(entry.min > 0)) { toast('Completează durata în minute.'); return; } delete entry.sets; }
+    else { entry.sets = entry.sets.filter(s => s.r > 0); if (!entry.sets.length) { toast('Completează cel puțin o serie.'); return; } delete entry.min; delete entry.km; }
+    entry.t = entry.t || Date.now();
+    delete entry.demo;
+    const i = journal.findIndex(e => e.id === entry.id);
+    if (i >= 0) journal[i] = entry; else journal.push(entry);
+    const exId = entry.ex;
+    closeLog();
+    afterLogChange(exId);
+    toast(saveLog() ? 'Salvat în jurnal' : 'Nu am putut salva pe acest dispozitiv');
+  }
+  function deleteLogEntry() {
+    const id = editing.entry.id, exId = editing.entry.ex;
+    if (!window.confirm('Ștergi această înregistrare din jurnal?')) return;
+    journal = journal.filter(e => e.id !== id);
+    closeLog();
+    afterLogChange(exId);
+    toast('Șters din jurnal');
+  }
+  let toastTimer = 0;
+  function toast(msg) {
+    const t = $('#toast');
+    t.textContent = msg; t.hidden = false; t.classList.add('on');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => { t.classList.remove('on'); setTimeout(() => { t.hidden = true; }, 250); }, 1800);
+  }
+
+  /* ---------- backup copy, import, sample data ---------- */
+  async function exportLog() {
+    const data = JSON.stringify({ app: 'Gym Atlas', version: 1, exported: new Date().toISOString(), entries: journal.filter(e => !e.demo) }, null, 1);
+    const name = `gym-atlas-jurnal-${todayISO()}.json`;
+    try {
+      const file = new File([data], name, { type: 'application/json' });
+      if (navigator.canShare && navigator.canShare({ files: [file] })) { await navigator.share({ files: [file], title: 'Jurnal Gym Atlas' }); return; }
+    } catch (e) { if (e && e.name === 'AbortError') return; }
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([data], { type: 'application/json' }));
+    a.download = name; document.body.appendChild(a); a.click(); a.remove();
+  }
+  function importLog() {
+    const inp = document.createElement('input');
+    inp.type = 'file'; inp.accept = 'application/json,.json';
+    inp.onchange = () => {
+      const f = inp.files && inp.files[0]; if (!f) return;
+      f.text().then(txt => {
+        const obj = JSON.parse(txt), list = Array.isArray(obj) ? obj : obj.entries;
+        if (!Array.isArray(list)) throw new Error('format');
+        const ok = list.filter(e => e && byId[e.ex] && /^\d{4}-\d{2}-\d{2}$/.test(e.date) && e.id);
+        const known = new Set(journal.map(e => e.id));
+        const added = ok.filter(e => !known.has(e.id));
+        journal = journal.concat(added);
+        saveLog(); renderJournal();
+        toast(added.length ? `Am importat ${added.length} ${added.length === 1 ? 'înregistrare' : 'înregistrări'}` : 'Nimic nou de importat');
+      }).catch(() => toast('Fișierul nu pare o copie a jurnalului'));
+    };
+    inp.click();
+  }
+  function loadDemo() {
+    const d = n => { const x = new Date(); x.setDate(x.getDate() - n); return isoOf(x); };
+    const S = (r, kg, n) => Array.from({ length: n }, () => ({ r, kg }));
+    const plan = [
+      [9, 'bench', S(10, 50, 3)], [9, 'bbrow', S(10, 45, 3)], [9, 'plank', S(40, 0, 3)],
+      [7, 'squat', S(8, 60, 3)], [7, 'rdl', S(10, 50, 3)], [7, 'treadmill', null, 20, 3],
+      [5, 'ohp', S(8, 30, 3)], [5, 'pullup', [{ r: 7, kg: 0 }, { r: 6, kg: 0 }, { r: 5, kg: 0 }]], [5, 'curl', S(12, 20, 3)],
+      [2, 'bench', [{ r: 10, kg: 52.5 }, { r: 9, kg: 52.5 }, { r: 8, kg: 52.5 }]], [2, 'incline', S(10, 18, 3)], [2, 'pushdown', S(12, 25, 3)],
+      [1, 'squat', [{ r: 8, kg: 62.5 }, { r: 8, kg: 62.5 }, { r: 6, kg: 65 }]], [1, 'bike', null, 25, 0], [0, 'pullup', [{ r: 8, kg: 0 }, { r: 7, kg: 0 }, { r: 6, kg: 0 }]],
+      [0, 'facepull', S(15, 15, 3)], [0, 'sideplank', S(30, 0, 2)]
+    ];
+    plan.forEach((p, i) => {
+      const e = { id: 'demo' + i, demo: true, ex: p[1], date: d(p[0]), t: i, note: '' };
+      if (p[2]) e.sets = p[2]; else { e.min = p[3]; if (p[4]) e.km = p[4]; }
+      journal.push(e);
+    });
+    saveLog(); renderJournal();
+  }
+
   /* ---------- events ---------- */
   function bind() {
     const map = $('#map');
@@ -2289,8 +3529,40 @@ document.getElementById('count').textContent = GymEngine.EX.length + ' de exerci
     });
     $('#q').addEventListener('input', e => { state.q = e.target.value; renderCatalog(); });
     document.querySelectorAll('.tab').forEach(b => b.addEventListener('click', () => setTab(b.dataset.tab)));
+
+    $('#journal').addEventListener('click', e => {
+      const row = e.target.closest('[data-entry]');
+      if (row) { const en = journal.find(x => x.id === row.dataset.entry); if (en) openLog(en.ex, en.id); return; }
+      if (e.target.closest('#jDemo')) { loadDemo(); return; }
+      if (e.target.closest('#jClearDemo')) { journal = journal.filter(x => !x.demo); saveLog(); renderJournal(); return; }
+      if (e.target.closest('#jExport')) { exportLog(); return; }
+      if (e.target.closest('#jImport')) { importLog(); }
+    });
+    $('#dBody').addEventListener('click', e => {
+      if (e.target.closest('#logBtn')) { openLog(anim ? anim.ex.id : null); return; }
+      const h = e.target.closest('[data-entry]');
+      if (h) { const en = journal.find(x => x.id === h.dataset.entry); if (en) openLog(en.ex, en.id); }
+    });
+    $('#logBody').addEventListener('click', e => {
+      if (!editing) return;
+      const st = e.target.closest('[data-step]');
+      if (st) {
+        readLogInputs();
+        const f = st.dataset.step, i = +st.dataset.i, dlt = +st.dataset.d, en = editing.entry;
+        if (f === 'min' || f === 'km') en[f] = Math.max(0, Math.round(((en[f] || 0) + dlt) * 100) / 100);
+        else en.sets[i][f] = Math.max(0, Math.round(((en.sets[i][f] || 0) + dlt) * 100) / 100);
+        drawLog(); return;
+      }
+      const rm = e.target.closest('[data-rm]');
+      if (rm) { readLogInputs(); editing.entry.sets.splice(+rm.dataset.rm, 1); drawLog(); return; }
+      if (e.target.closest('#logAdd')) { readLogInputs(); const s = editing.entry.sets; s.push(Object.assign({}, s[s.length - 1] || { r: 10, kg: 0 })); drawLog(); }
+    });
+    $('#logSave').addEventListener('click', saveLogEntry);
+    $('#logCancel').addEventListener('click', closeLog);
+    $('#logDelete').addEventListener('click', deleteLogEntry);
+    $('#logSheet').addEventListener('click', e => { if (e.target.id === 'logSheet') closeLog(); });
     $('#dBack').addEventListener('click', closeDetail);
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDetail(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') { if (editing) closeLog(); else closeDetail(); } });
   }
 
   window.addEventListener('three-ready', scheduleThumbs);
@@ -2307,6 +3579,7 @@ document.getElementById('count').textContent = GymEngine.EX.length + ' de exerci
   renderResults();
   renderFilters();
   renderCatalog();
+  renderJournal();
   bind();
   setTab(state.tab);
 })();

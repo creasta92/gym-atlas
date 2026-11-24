@@ -1,7 +1,7 @@
 /* Gym Atlas: keeps the app on the phone so it opens offline.
    Files are served from the cache first; when there is internet, a fresh copy is fetched in the
    background and used the next time the app opens. */
-const CACHE = 'gym-atlas-v1';
+const CACHE = 'gym-atlas-v3';
 const FILES = ['./', './index.html', './manifest.webmanifest', './icon-180.png', './icon-192.png', './icon-512.png'];
 
 self.addEventListener('install', event => {
